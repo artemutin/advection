@@ -118,15 +118,159 @@
 
 \begin_layout Standard
 Будем рассматривать задачу Коши для системы обыкновенных дифференциальных
- уравнений:
+ уравнений
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+\frac{du(t)}{dt}=f(t,u),\; t>0,\; u(0)=u^{0}\label{eq:Cauchy problem}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+где 
+\begin_inset Formula $u(t)=(\, u_{1}(t),u_{2}(t),...,u_{n}(t)\,)$
+\end_inset
+
+, 
+\begin_inset Formula $u^{0}=(\, u_{1}(0),u_{2}(0),...,u_{n}(0)\,)$
+\end_inset
+
+.
+ При исследовании численных методов для задачи Коши будем предполагать,
+ что ее решение существует, единственно и обладает необходимой гладкостью.
+\end_layout
+
+\begin_layout Standard
+Существуют две группы численных методов для решения задачи Коши: многошаговые
+ методы Адамса и методы Рунге-Кутта.
+\end_layout
+
+\begin_layout Subsubsection
+Методы Рунге-Кутта
+\end_layout
+
+\begin_layout Standard
+В общем случае, явный 
+\begin_inset Formula $m$
+\end_inset
+
+-этапный метод Рунге-Кутта состоит в следующем.
+ Пусть известно решение 
+\begin_inset Formula $u_{n}=u(t_{n})$
+\end_inset
+
+.
+ Зададим числовые коэффициенты 
+\begin_inset Formula $a_{i},\; b_{ij},\; i=2..m,\; j=1..m-1,\;\sigma_{i},\; i=1..m$
+\end_inset
+
+ и последовательно вычисляются некоторые функции 
+\begin_inset Formula 
+\begin{multline*}
+k_{1}=f(t_{n,}u_{n}),\; k_{2}=f(t_{n}+a_{2}\tau,\, u_{n}+b_{21}\tau k_{1}),\\
+...\\
+k_{m}=f(t_{n}+a_{m}\tau,\; u_{n}+b_{m1}\tau k_{1}+...+b_{m,m-1}\tau k_{m-1})
+\end{multline*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+После чего из формулы 
+\begin_inset Formula 
+\begin{equation}
+\frac{u_{n+1}-u_{n}}{\tau}=\sum_{i=1}\sigma_{i}k_{i}\label{eq:runge_main}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+находится новое значение 
+\begin_inset Formula $u_{n+1}$
+\end_inset
+
+.
+ Коэффициенты 
+\begin_inset Formula $a_{i},\; b_{ij},\;\sigma_{i}$
+\end_inset
+
+ выбираются из соображений точности.
+ Например, для того чтобы 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:runge_main"
+
+\end_inset
+
+ аппроксимировало исходную задачу 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Cauchy problem"
+
+\end_inset
+
+ требуется 
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{m}\sigma_{i}=1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+При 
+\begin_inset Formula $m=1$
+\end_inset
+
+ получаем наиболее простую формулу - метод Эйлера, или метод ломанных.
+ 
 \begin_inset Formula 
 \[
-\frac{du(t)}{}
+u_{n+1}=u_{n}+\tau f(t_{n},u_{n})
 \]
 
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+Приведем оценки точности данного метода.
+ Говорят, что метод имеет 
+\begin_inset Formula $p$
+\end_inset
+
+-й поря
+\end_layout
+
+\begin_layout Section
+Список литературы
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Самарский А.А., Гулин А.В Численные методы: Учеб.
+ пособие для вузов.
+ - М.:Наука., 1989.-432 с.
 \end_layout
 
 \end_body
