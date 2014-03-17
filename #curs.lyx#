@@ -120,18 +120,10 @@
 Будем рассматривать задачу Коши для системы обыкновенных дифференциальных
  уравнений:
 \begin_inset Formula 
-\begin{equation}
-\frac{du(t)}{dt}=f(t,u),\; t>0,\; u(0)=u^{0}\label{eq:Cauchy problem}
-\end{equation}
+\[
+\frac{du(t)}{}
+\]
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-где 
-\begin_inset Formula $u(t)=(\, u_{1}(t),u_{2}(t),...,u_{n}(t)\,)$
 \end_inset
 
 
