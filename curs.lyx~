@@ -165,8 +165,8 @@ key "key-1"
 \end_inset
 
 -этапный метод Рунге-Кутта состоит в следующем.
- Пусть известно решение 
-\begin_inset Formula $u_{n}=u(t_{n})$
+ Пусть известно приближенное решение 
+\begin_inset Formula $y_{n}=y(t_{n})$
 \end_inset
 
 .
@@ -177,9 +177,9 @@ key "key-1"
  и последовательно вычисляются некоторые функции 
 \begin_inset Formula 
 \begin{align*}
-k_{1} & =f(t_{n,}u_{n}),\; k_{2}=f(t_{n}+a_{2}\tau,\, u_{n}+b_{21}\tau k_{1}),\\
+k_{1} & =f(t_{n,}y_{n}),\; k_{2}=f(t_{n}+a_{2}\tau,\, y_{n}+b_{21}\tau k_{1}),\\
 ...\\
-k_{m} & =f(t_{n}+a_{m}\tau,\; u_{n}+b_{m1}\tau k_{1}+...+b_{m,m-1}\tau k_{m-1})
+k_{m} & =f(t_{n}+a_{m}\tau,\; y_{n}+b_{m1}\tau k_{1}+...+b_{m,m-1}\tau k_{m-1})
 \end{align*}
 
 \end_inset
@@ -191,7 +191,7 @@ k_{m} & =f(t_{n}+a_{m}\tau,\; u_{n}+b_{m1}\tau k_{1}+...+b_{m,m-1}\tau k_{m-1})
 После чего из формулы 
 \begin_inset Formula 
 \begin{equation}
-\frac{u_{n+1}-u_{n}}{\tau}=\sum_{i=1}\sigma_{i}k_{i}\label{eq:runge_main}
+\frac{y_{n+1}-y_{n}}{\tau}=\sum_{i=1}\sigma_{i}k_{i}\label{eq:runge_main}
 \end{equation}
 
 \end_inset
@@ -201,7 +201,7 @@ k_{m} & =f(t_{n}+a_{m}\tau,\; u_{n}+b_{m1}\tau k_{1}+...+b_{m,m-1}\tau k_{m-1})
 \end_inset
 
 находится новое значение 
-\begin_inset Formula $u_{n+1}$
+\begin_inset Formula $y_{n+1}$
 \end_inset
 
 .
@@ -240,7 +240,7 @@ reference "eq:Cauchy problem"
  
 \begin_inset Formula 
 \[
-u_{n+1}=u_{n}+\tau f(t_{n},u_{n})
+y_{n+1}=y_{n}+\tau f(t_{n},y_{n})
 \]
 
 \end_inset
@@ -249,7 +249,31 @@ u_{n+1}=u_{n}+\tau f(t_{n},u_{n})
 \begin_inset Newline newline
 \end_inset
 
-Приведем оценки точности данного метода.
+Введя на отрезке 
+\begin_inset Formula $[0,T]$
+\end_inset
+
+ равномерную сетку 
+\begin_inset Formula $\omega_{\tau}$
+\end_inset
+
+в качестве решения задачи Коши мы получим сеточную функцию 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Прежде чем привести оценки 
+\begin_inset Quotes eld
+\end_inset
+
+хорошести
+\begin_inset Quotes erd
+\end_inset
+
+ данного метода, определим некоторые понятия.
  Говорят, что метод имеет 
 \begin_inset Formula $p$
 \end_inset
@@ -258,7 +282,37 @@ u_{n+1}=u_{n}+\tau f(t_{n},u_{n})
 \begin_inset Formula $\exists p>0:\;|y_{n}-u_{n}|=O(\tau^{p})$
 \end_inset
 
+ при 
+\begin_inset Formula $\tau\rightarrow0$
+\end_inset
+
+, где 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+-точное решение.
+ Метод имеет 
+\begin_inset Formula $p$
+\end_inset
+
+-й порядок аппроксимации, если невязка 
+\begin_inset Formula $\psi_{n}=f(t_{n},u_{n})-\frac{u_{n+1}-u_{n}}{\tau}=O(\tau^{p})$
+\end_inset
+
 .
+ Для методов Рунге-Кутта справедлива теорема, о том что, порядок точности
+ и порядок аппроксимации для этого семейства методов совпадает.
+ Поэтому, используя разложение по формуле Тейлора, легко виден порядок аппроксим
+ации, а следовательно, и точности метода Эйлера:
+\begin_inset Formula 
+\begin{align*}
+\frac{u_{n+1}-u_{n}}{\tau} & =u'(t_{n})+O(\tau)\\
+\psi_{n}=u'(t_{n})-f(t_{n},u_{n})+O(\tau)=O(\tau)
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -310,7 +364,14 @@ reference "eq:model_problem"
 
 \end_inset
 
- примут вид:
+ примут вид
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+:
 \begin_inset Formula 
 \begin{align}
 u(x,y) & =-V_{\tau}(r)sin(\Theta),\nonumber \\
@@ -333,9 +394,36 @@ key "key-1"
 
 \end_inset
 
-Самарский А.А., Гулин А.В Численные методы: Учеб.
+Самарский А.А., Гулин А.В 
+\begin_inset Quotes eld
+\end_inset
+
+Численные методы: Учеб.
  пособие для вузов.
+\begin_inset Quotes erd
+\end_inset
+
  - М.:Наука., 1989.-432 с.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+Charles A.
+ Doswell, 
+\begin_inset Quotes eld
+\end_inset
+
+A kinematic ananlysis of frontogenesis associated with a nondivergent vortex.
+\begin_inset Quotes erd
+\end_inset
+
+- Journal of the athmospheric sciences, 1983.
+ 
 \end_layout
 
 \end_body

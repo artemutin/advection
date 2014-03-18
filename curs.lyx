@@ -236,8 +236,10 @@ reference "eq:Cauchy problem"
 \begin_inset Formula $m=1$
 \end_inset
 
- получаем наиболее простую формулу - метод Эйлера, или метод ломанных.
- 
+ получаем наиболее простую формулу - метод Эйлера, или метод ломанных, поскольку
+ на каждом шаге метода мы приближаем интегральную кривую отрезком касательной
+ к интегральной кривой в точке.
+  
 \begin_inset Formula 
 \[
 y_{n+1}=y_{n}+\tau f(t_{n},y_{n})
@@ -313,6 +315,56 @@ y_{n+1}=y_{n}+\tau f(t_{n},y_{n})
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+Данный метод не относится к числу широко используемых в реальных вычислительных
+ задачах в силу малого порядка точности.
+\end_layout
+
+\begin_layout Standard
+При 
+\begin_inset Formula $m=2$
+\end_inset
+
+ получаем семейство методов, для которых при различных значениях параметров
+ возможно построение схем как первого (при 
+\begin_inset Formula $\sigma_{1}+\sigma_{2}=1$
+\end_inset
+
+), так и второго порядка точности (при дополнительном условии 
+\begin_inset Formula $\sigma_{2}b_{21}=\sigma_{2}a_{2}=0.5$
+\end_inset
+
+).(можно расписать
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+) Схемы второго порядка точности имеют общий вид:
+\begin_inset Formula 
+\begin{equation}
+\frac{y_{n+1}-y_{n}}{\tau}=(1-\sigma)f(t_{n},y_{n})+\sigma f(t_{n}+a\tau,y_{n}+a\tau f(t_{n},y_{n})\label{eq:runge_2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+где 
+\begin_inset Formula $\sigma a=0.5$
+\end_inset
+
+.
+ При 
+\begin_inset Formula $\sigma=1,\; a=0.5$
+\end_inset
+
+ получаем метод
 \end_layout
 
 \begin_layout Section
