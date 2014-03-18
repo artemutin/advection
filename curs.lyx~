@@ -236,7 +236,13 @@ reference "eq:Cauchy problem"
 \begin_inset Formula $m=1$
 \end_inset
 
- получаем наиболее простую формулу - метод Эйлера, или метод ломанных.
+ получаем наиболее простую формулу - метод Эйлера, или метод ломанных, поскольку
+ на каждом шаге метода мы приближаем интегральную кривую отрезком касательной
+ к ней в точке 
+\begin_inset Formula $(t_{n},y_{n})$
+\end_inset
+
+.
  
 \begin_inset Formula 
 \[
@@ -313,6 +319,163 @@ y_{n+1}=y_{n}+\tau f(t_{n},y_{n})
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+Данный метод не относится к числу широко используемых в реальных вычислительных
+ задачах в силу малого порядка точности.
+\end_layout
+
+\begin_layout Standard
+При 
+\begin_inset Formula $m=2$
+\end_inset
+
+ получаем семейство методов, для которых при различных значениях параметров
+ возможно построение схем как первого (при 
+\begin_inset Formula $\sigma_{1}+\sigma_{2}=1$
+\end_inset
+
+), так и второго порядка точности (при дополнительном условии 
+\begin_inset Formula $\sigma_{2}b_{21}=\sigma_{2}a_{2}=0.5$
+\end_inset
+
+).(можно расписать
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+) Схемы второго порядка точности имеют общий вид:
+\begin_inset Formula 
+\begin{equation}
+\frac{y_{n+1}-y_{n}}{\tau}=(1-\sigma)f(t_{n},y_{n})+\sigma f(t_{n}+a\tau,y_{n}+a\tau f(t_{n},y_{n}))\label{eq:runge_2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+где 
+\begin_inset Formula $\sigma a=0.5$
+\end_inset
+
+.
+ При 
+\begin_inset Formula $\sigma=1,\; a=0.5$
+\end_inset
+
+ получаем метод 
+\begin_inset Formula 
+\[
+\frac{y_{n+1}-y_{n}}{\tau}=f(t_{n}+\frac{1}{2}\tau,y_{n}+\frac{1}{2}\tau f(t_{n},y_{n})),
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+который реализует схему 
+\begin_inset Quotes eld
+\end_inset
+
+предиктор-корректор
+\begin_inset Quotes erd
+\end_inset
+
+ - начальное приближение, полученное по методу Эйлера для половинного узла
+ затем уточняется тем же методом Эйлера, реализуя на самом деле схему численного
+ интегрирования методом центральных прямоугольников, что, как известно,
+ обеспечивает порядок точности 
+\begin_inset Formula $O(\tau^{2}).$
+\end_inset
+
+ При 
+\begin_inset Formula $\sigma=0.5,\; a=1$
+\end_inset
+
+ получаем другой метод, известный как метод Эйлера с пересчетом(предикт-коррект?
+)
+\begin_inset Formula 
+\begin{align*}
+k_{1} & =f(t_{n},y_{n}),\; k_{2}=f(t_{n}+\tau,y_{n}+\tau k_{1}),\\
+y_{n+1}=y_{n}+\frac{1}{2}\tau & (k_{1}+k_{2})
+\end{align*}
+
+\end_inset
+
+Дальнейшее увеличение порядка точности требует увеличения числа промежуточных
+ этапов в вычислении.
+ Общеупотребительной является четырехэтапная схема четвертого порядка точности:
+\begin_inset Formula 
+\begin{align*}
+k_{1} & =f(t_{n},y_{n}),\; k_{2}=f(t_{n}+\frac{\tau}{2},y_{n}+\frac{\tau k_{1}}{2}),\\
+k_{3}=f(t_{n}+\frac{\tau}{2},y_{n}+\frac{\tau k_{2}}{2}), & k_{4}=f(t_{n}+\tau,y_{n}+\tau k_{3}),\\
+\frac{y_{n+1}-y_{n}}{\tau} & =\frac{1}{6}(k_{1}+2k_{2}+2k_{3}+k_{4})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Методы Адамса
+\end_layout
+
+\begin_layout Standard
+В методах Рунге-Кутта для построения решения в данный момент времени использовал
+ось только одно предыдущее значение 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+.
+ Вполне обоснованной является идея применения нескольких ранее вычисленных
+ значений для расчета текущего значения.
+ Линейным 
+\begin_inset Formula $m-$
+\end_inset
+
+шаговым разностным методом называется система разностных уравнений 
+\begin_inset Formula 
+\begin{align*}
+\frac{a_{0}y_{n}+a_{1}y_{n-1}+...+a_{m}y_{n-m}}{\tau} & =b_{0}f_{n}+b_{1}f_{n-1}+...+b_{m}f_{n-m},\\
+n=m,m+1,...
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+где 
+\begin_inset Formula $a_{k},b_{k}$
+\end_inset
+
+- числовые коэффициенты, не зависящие от 
+\begin_inset Formula $n$
+\end_inset
+
+, a 
+\begin_inset Formula $a_{0}\neq0$
+\end_inset
+
+.
+ Расчет по таким формулам возможен начиная с 
+\begin_inset Formula $n$
+\end_inset
+
+-ого элемента, поэтому начальные значения 
+\begin_inset Formula $y_{0},...,y_{n-1}$
+\end_inset
+
+ должны быть предварительно известны, или вычислены другими методами
 \end_layout
 
 \begin_layout Section
