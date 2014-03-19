@@ -637,7 +637,7 @@ reference "eq:yeva"
 .
  Задача интерполирования алгебраическими многочленами состоит в нахождении
  функции 
-\begin_inset Formula $L(x)=a_{0}+a_{1}x+...a_{n}x^{n}$
+\begin_inset Formula $L_{n}(x)=a_{0}+a_{1}x+...a_{n}x^{n}$
 \end_inset
 
 , которая в заданных точках 
@@ -649,7 +649,65 @@ reference "eq:yeva"
 \end_inset
 
 .
- 
+ Такой многочлен 
+\begin_inset Formula $L_{n}(x)$
+\end_inset
+
+ называется интерполяционным многочленом для функции 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, построенным по узлам 
+\begin_inset Formula $\{x_{k}\}$
+\end_inset
+
+ Для любой непрерывной функции сформулированная задача имеет единственное
+ решение().
+ Интерполяционный многочлен можно записать различным образом.
+ Самыми распространенными являются формы Лагранжа и Ньютона.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+L_{n}(x) & =\sum_{k=0}^{n}c_{k}(x)f(x_{k})\nonumber \\
+ & c_{k}(x)=\frac{{\displaystyle \prod_{i\neq j}(x-x_{i})}}{{\displaystyle \prod_{i\neq j}(x_{j}-x_{i})}}\label{eq:Legrange}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Формула 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Legrange"
+
+\end_inset
+
+ представляет интерполяционный многочлен в виде линейной комбинации значений
+ в узлах.
+ Эта форма носит название интерполяционного многочлена Лагранжа.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{multline}
+L_{n}(x)=f(x_{0})+(x-x_{0})f(x_{0},x_{1})+(x-x_{0})(x-x_{1})f(x_{0},x_{1},x_{2})+...\\
+...+(x-x_{0})(x-x_{1})...(x-x_{n-1})f(x_{0},x_{1},...x_{n})\label{eq:Newton}
+\end{multline}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Данная форма представляет собой разностный аналог формулы Тейлора, записанная
+ посредством разделенных разностей (можно расписать).
+ Она носит название интерполяционного многочлена Ньютона.
 \end_layout
 
 \begin_layout Section

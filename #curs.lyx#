@@ -606,9 +606,9 @@ reference "eq:yeva"
 \begin_layout Standard
 При решении реальных задач вместо аналитического выражения функции зачастую
  имеются лишь таблица ее значений в некоторых точках времени и/или пространства.
- Например, для задачи адвекции в реальной среде может быть установлено лишь
- ограниченное количество измерительных приборов, замеряющих характеристики
- среды лишь в некоторых точках пространства.
+ Например, для задачи адвекции в реальной среде может быть установлено ограничен
+ное количество измерительных приборов, замеряющих характеристики среды лишь
+ в некоторых точках пространства.
  Эти замеры могут производится не непрерывно, а через дискретные промежутки
  времени.
  В этом случае, для получения значения в произвольной точке пространства-времени
@@ -626,7 +626,15 @@ reference "eq:yeva"
 Алгебраические полиномы являются подробно изученным классом функций, допускающим
  удобную реализацию для ЭВМ, поэтому полиномиальная интерполяция широко
  распространена.
- Пусть известны значения функции 
+ 
+\end_layout
+
+\begin_layout Paragraph
+Интерполяционные полиномы Ньютона и Лагранжа
+\end_layout
+
+\begin_layout Standard
+Пусть известны значения функции 
 \begin_inset Formula $f(x)$
 \end_inset
 
@@ -637,7 +645,7 @@ reference "eq:yeva"
 .
  Задача интерполирования алгебраическими многочленами состоит в нахождении
  функции 
-\begin_inset Formula $L(x)=a_{0}+a_{1}x+...a_{n}x^{n}$
+\begin_inset Formula $L_{n}(x)=a_{0}+a_{1}x+...a_{n}x^{n}$
 \end_inset
 
 , которая в заданных точках 
@@ -649,7 +657,93 @@ reference "eq:yeva"
 \end_inset
 
 .
+ Такой многочлен 
+\begin_inset Formula $L_{n}(x)$
+\end_inset
+
+ называется интерполяционным многочленом для функции 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, построенным по узлам 
+\begin_inset Formula $\{x_{k}\}$
+\end_inset
+
+ Для любой непрерывной функции сформулированная задача имеет единственное
+ решение().
+ Интерполяционный многочлен можно записать различным образом.
+ Самыми распространенными являются формы Лагранжа и Ньютона.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+L_{n}(x) & =\sum_{k=0}^{n}c_{k}(x)f(x_{k})\nonumber \\
+ & c_{k}(x)=\frac{{\displaystyle \prod_{i\neq j}(x-x_{i})}}{{\displaystyle \prod_{i\neq j}(x_{j}-x_{i})}}\label{eq:Legrange}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Формула 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Legrange"
+
+\end_inset
+
+ представляет интерполяционный многочлен в виде линейной комбинации значений
+ в узлах.
+ Эта форма носит название интерполяционного многочлена Лагранжа.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{multline}
+L_{n}(x)=f(x_{0})+(x-x_{0})f(x_{0},x_{1})+(x-x_{0})(x-x_{1})f(x_{0},x_{1},x_{2})+...\\
+...+(x-x_{0})(x-x_{1})...(x-x_{n-1})f(x_{0},x_{1},...x_{n})\label{eq:Newton}
+\end{multline}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Данная форма представляет собой разностный аналог формулы Тейлора, записанная
+ посредством разделенных разностей (можно расписать).
+ Она носит название интерполяционного многочлена Ньютона.
+ В вычислительном эксперименте, для нестационарного поля скорости, известного
+ лишь в моменты 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ для интерполяции по времени были применены линейные, квадратичные и кубические
+ интерполяционные полиномы.
+\end_layout
+
+\begin_layout Paragraph
+Интерполяционный многочлен эрмита
+\end_layout
+
+\begin_layout Standard
+Важным вопросом является вопрос сходимости интерполяционного процесса 
+\begin_inset Formula $L_{n}(x)\rightarrow f(x)$
+\end_inset
+
+.
+ Увеличение числа узлов интерполяции не всегда дает увеличение точности
+ приближения исходной функции(модуль).
+ Поэтому методы полиномиальной интерполяции получили дальнейшее развитие.
+ Для лучшего приближения функции можно потребовать в узлах не только равенства
  
+\begin_inset Formula $L_{n}(x_{j})=f(x_{j})\;\forall j$
+\end_inset
+
+, но и равенства производных первого и более высокого порядка.
 \end_layout
 
 \begin_layout Section
@@ -755,12 +849,30 @@ Charles A.
 \begin_inset Quotes eld
 \end_inset
 
-A kinematic ananlysis of frontogenesis associated with a nondivergent vortex.
+A kinematic analysis of frontogenesis associated with a nondivergent vortex.
 \begin_inset Quotes erd
 \end_inset
 
 - Journal of the athmospheric sciences, 1983.
  
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-3"
+
+\end_inset
+
+Калиткин Н.Н 
+\begin_inset Quotes eld
+\end_inset
+
+Численные методы
+\begin_inset Quotes erd
+\end_inset
+
+, М.: Наука, 1978.-512 стр.
 \end_layout
 
 \end_body
