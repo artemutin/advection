@@ -494,11 +494,109 @@ reference "eq:many_steps"
 .
  В обратном случае метод является неявным и тогда необходимо решать нелинейное
  уравнение или строить схему по принципу предиктор-корректор.
+ Для того, чтобы правая часть уравнения 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:many_steps"
+
+\end_inset
+
+ аппроксимировала правую часть исходного уравнения, необходимо выполнение
+ равенства 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{m}}b_{k}=1$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Наиболее общеупотребительными представителями данной разновидности методов
- является семейство методов Адамса.
+В практике вычислений наибольшее распространение получили методы Адамса,
+ являющиеся частным случаем формул 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:many_steps"
+
+\end_inset
+
+, когда аппроксимация производной в левой части проводится всего по двум
+ точкам
+\begin_inset Formula 
+\begin{equation}
+\frac{y_{n}-y_{n-1}}{\tau}=\sum_{k=0}^{m}b_{k}f_{n-k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Хотя возможно построение многошаговых схем вплоть до порядка аппроксимации
+ 
+\begin_inset Formula $2m$
+\end_inset
+
+, однако они практически непригодны для расчетов из-за неустойчивости.
+ Для методов Адамса порядок аппроксимации скромнее - до 
+\begin_inset Formula $m+1$
+\end_inset
+
+ при неявных схемах, и до 
+\begin_inset Formula $m$
+\end_inset
+
+ при явных.
+\end_layout
+
+\begin_layout Standard
+Для реализации в численном эксперименте была выбрана комбинация неявного
+ метода Адамса 4го порядка
+\begin_inset Formula 
+\begin{equation}
+\frac{y_{n}-y_{n-1}}{\tau}=\frac{1}{24}(9f_{n}+19f_{n-1}-5f_{n-2}+f_{n-3})\label{eq:neyva}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+и явного метода Адамса 3го порядка
+\begin_inset Formula 
+\begin{equation}
+\frac{y_{n}-y_{n-1}}{\tau}=\frac{1}{12}(23f_{n-1}-16f_{n-2}+5f_{n-2})\label{eq:yeva}
+\end{equation}
+
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+построенная по принципу предиктор - корректор, т.е неизвестное значение 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ в 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:neyva"
+
+\end_inset
+
+ вычислялось в предварительно посчитаной по формуле 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:yeva"
+
+\end_inset
+
+ точке 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section

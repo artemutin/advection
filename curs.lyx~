@@ -443,10 +443,10 @@ k_{3}=f(t_{n}+\frac{\tau}{2},y_{n}+\frac{\tau k_{2}}{2}), & k_{4}=f(t_{n}+\tau,y
 
 шаговым разностным методом называется система разностных уравнений 
 \begin_inset Formula 
-\begin{align*}
-\frac{a_{0}y_{n}+a_{1}y_{n-1}+...+a_{m}y_{n-m}}{\tau} & =b_{0}f_{n}+b_{1}f_{n-1}+...+b_{m}f_{n-m},\\
-n=m,m+1,...
-\end{align*}
+\begin{align}
+\frac{a_{0}y_{n}+a_{1}y_{n-1}+...+a_{m}y_{n-m}}{\tau} & =b_{0}f_{n}+b_{1}f_{n-1}+...+b_{m}f_{n-m},\label{eq:many_steps}\\
+n=m,m+1,...\nonumber 
+\end{align}
 
 \end_inset
 
@@ -475,7 +475,81 @@ n=m,m+1,...
 \begin_inset Formula $y_{0},...,y_{n-1}$
 \end_inset
 
- должны быть предварительно известны, или вычислены другими методами
+ должны быть предварительно известны, или вычислены другими методами.
+ Метод 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:many_steps"
+
+\end_inset
+
+ является явным, если 
+\begin_inset Formula $b_{0}=0,$
+\end_inset
+
+ и тогда возможно явно выразить значение 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+.
+ В обратном случае метод является неявным и тогда необходимо решать нелинейное
+ уравнение или строить схему по принципу предиктор-корректор.
+ Для того, чтобы правая часть уравнения 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:many_steps"
+
+\end_inset
+
+ аппроксимировала правую часть исходного уравнения, необходимо выполнение
+ равенства 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{m}}b_{k}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+В практике вычислений наибольшее распространение получили методы Адамса,
+ являющиеся частным случаем формул 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:many_steps"
+
+\end_inset
+
+, когда аппроксимация производной в левой части проводится всего по двум
+ точкам
+\begin_inset Formula 
+\begin{equation}
+\frac{y_{n}-y_{n-1}}{\tau}=\sum_{k=0}^{m}b_{k}f_{n-k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Хотя возможно построение многошаговых схем вплоть до порядка аппроксимации
+ 
+\begin_inset Formula $2m$
+\end_inset
+
+, однако они практически непригодны для расчетов из-за неустойчивости.
+ Для методов Адамса порядок аппроксимации скромнее - до 
+\begin_inset Formula $m+1$
+\end_inset
+
+ при неявных схемах, и до 
+\begin_inset Formula $m$
+\end_inset
+
+ при явных.
+\end_layout
+
+\begin_layout Standard
+Для реализации 
 \end_layout
 
 \begin_layout Section
