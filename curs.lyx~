@@ -626,7 +626,15 @@ reference "eq:yeva"
 Алгебраические полиномы являются подробно изученным классом функций, допускающим
  удобную реализацию для ЭВМ, поэтому полиномиальная интерполяция широко
  распространена.
- Пусть известны значения функции 
+ 
+\end_layout
+
+\begin_layout Paragraph
+Интерполяционные полиномы Ньютона и Лагранжа
+\end_layout
+
+\begin_layout Standard
+Пусть известны значения функции 
 \begin_inset Formula $f(x)$
 \end_inset
 
@@ -694,13 +702,175 @@ reference "eq:Legrange"
 
 \begin_layout Standard
 \begin_inset Formula 
+\begin{multline}
+L_{n}(x)=f(x_{0})+(x-x_{0})f(x_{0},x_{1})+(x-x_{0})(x-x_{1})f(x_{0},x_{1},x_{2})+...\\
+...+(x-x_{0})(x-x_{1})...(x-x_{n-1})f(x_{0},x_{1},...x_{n})\label{eq:Newton}
+\end{multline}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Данная форма представляет собой разностный аналог формулы Тейлора, записанная
+ посредством разделенных разностей (можно расписать).
+ Она носит название интерполяционного многочлена Ньютона.
+ Погрешность интерполяции в данном случае имеет вид 
+\begin_inset Formula 
+\begin{equation}
+|f(x)-L_{n}(x)|\leq\frac{M_{n+1}}{(n+1)!}|\prod_{i=0}^{n}(x-x_{i})|,\; M_{n+1}=max|f^{(n-1)}(\xi)|\label{eq:Newton_err}
+\end{equation}
+
+\end_inset
+
+ В вычислительном эксперименте, для нестационарного поля скорости, известного
+ лишь в моменты 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ для интерполяции по времени были применены линейные, квадратичные и кубические
+ интерполяционные полиномы.
+\end_layout
+
+\begin_layout Paragraph
+Интерполяционный многочлен Эрмита
+\end_layout
+
+\begin_layout Standard
+Важным вопросом является вопрос сходимости интерполяционного процесса 
+\begin_inset Formula $L_{n}(x)\rightarrow f(x)$
+\end_inset
+
+.
+ Увеличение числа узлов интерполяции не всегда дает увеличение точности
+ приближения исходной функции(модуль).
+ Поэтому методы полиномиальной интерполяции получили дальнейшее развитие.
+ Для лучшего приближения функции можно потребовать в узлах не только равенства
+ 
+\begin_inset Formula $L_{n}(x_{j})=f(x_{j})\;\forall j$
+\end_inset
+
+, но и равенства производных первого и более высоких порядков.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Для того, чтобы построить интерполяционный полином Эрмита 
+\begin_inset Formula $H_{n}(x,x_{0},x_{1},...,x_{n})$
+\end_inset
+
+ по 
+\begin_inset Formula $n+1$
+\end_inset
+
+ узлу, построим интерполяционный полином Ньютона 
+\begin_inset Formula $L_{n}(x,x_{0},x_{1},...,x_{n})$
+\end_inset
+
+, затем начиная приближать 
+\begin_inset Formula $x_{n}\rightarrow x_{n-1}$
+\end_inset
+
+ средний наклон все более будет стремиться к значению производной и 
+\begin_inset Formula $L_{n}^{*}(x,x_{0},x_{1},...,x_{n-1},x_{n-1})$
+\end_inset
+
+ будет правильно передавать значение производной в точке 
+\begin_inset Formula $x_{n-1}$
+\end_inset
+
+.
+ Подобным построением получаем (эмпирическую) формулу для полинома Эрмита
+ 
+\begin_inset Formula 
+\begin{align}
+H_{n}(x,x_{0},x_{1},...,x_{n}) & =L_{n}(\underbrace{x_{0},x_{0},...,x_{0}}_{m_{0}},\underbrace{x_{1},x_{1},...,x_{1}}_{m_{1}},...,\underbrace{x_{p},x_{p},...,x_{p}}_{m_{n}})\nonumber \\
+ & \sum_{k=0}^{p}m_{k}=n+1\label{eq:Herm}
+\end{align}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+которая в узле 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ правильно передает значение функции и ее производной до порядка 
+\begin_inset Formula $m_{k}-1$
+\end_inset
+
+.
+ Оценка погрешности в этом случае следует из 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Newton_err"
+
+\end_inset
+
+ и имеет вид 
+\begin_inset Formula 
+\begin{equation}
+|f(x)-H_{n}(x)|\leq\frac{M_{n+1}}{(n+1)!}|\prod_{i=0}^{n}(x-x_{i})^{m_{i}}|,\; M_{n+1}=max|f^{(n-1)}(\xi)|\label{eq:Herm_err}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Т.к в формуле 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Herm"
+
+\end_inset
+
+ содержатся разделенные разности, то при вычислении в кратных узлах будут
+ возникать неопределенности типа 
+\begin_inset Formula $\frac{0}{0}$
+\end_inset
+
+.
+ Если кратность узла не выше второй, то можно воспользоваться предельным
+ переходом 
+\begin_inset Formula 
 \[
-L_{n}(x)=f(x_{0})+(x-x_{0})f(x_{0},x_{1})+(x-x_{0})(x-x_{1})f(x_{0},x_{1},x_{2})+...+(x-x_{0})(x-x_{1})...(x-x_{n-1})f(x_{0},x_{1},...x_{n)}
+f(x_{0},x_{0})=\lim_{x_{1}\rightarrow x_{0}}\frac{f(x_{0})-f(x_{1})}{x_{0}-x_{1}}=f'(x_{0})
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Paragraph
+Интерполяция сплайнами
+\end_layout
+
+\begin_layout Standard
+Для повышения точности интерполяции на интервале 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ мы можем не только просто увеличить число узлов интерполяции, тем самым
+ подняв степень полинома, но вместо этого, разбить интервал 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ на частичные отрезки и на каждом из них приблизить функцию полиномом небольшой
+ степени.
+ Для этого можно воспользоваться аппаратом сплайн-функций.
 \end_layout
 
 \begin_layout Section
@@ -806,12 +976,30 @@ Charles A.
 \begin_inset Quotes eld
 \end_inset
 
-A kinematic ananlysis of frontogenesis associated with a nondivergent vortex.
+A kinematic analysis of frontogenesis associated with a nondivergent vortex.
 \begin_inset Quotes erd
 \end_inset
 
 - Journal of the athmospheric sciences, 1983.
  
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-3"
+
+\end_inset
+
+Калиткин Н.Н 
+\begin_inset Quotes eld
+\end_inset
+
+Численные методы
+\begin_inset Quotes erd
+\end_inset
+
+, М.: Наука, 1978.-512 стр.
 \end_layout
 
 \end_body
