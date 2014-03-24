@@ -934,6 +934,23 @@ S_{3,1}(x) & =f_{i}(1-t)^{2}(1+2t)+f_{i+1}t^{2}(3-2t)+m_{i}h_{i}t(1-t)^{2}-m_{i+
 \begin_inset Formula $m_{i}$
 \end_inset
 
+.
+ В общем случае, погрешность интерполяции зависит от 
+\begin_inset Formula $\omega(f)=max(x'-x''),\;\forall x',x''\in[a,b]$
+\end_inset
+
+ и шагов сетки.
+ Для сплайнов с нулевыми граничныминаклонами эта оценка принимает вид:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\parallel S(x)-f(x)\parallel_{C}\leq
+\]
+
+\end_inset
+
 
 \end_layout
 
