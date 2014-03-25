@@ -283,14 +283,6 @@ reference "eq:Start_cond"
 \end_layout
 
 \begin_layout Subsection
-Структура вычислительного эксперимента
-\end_layout
-
-\begin_layout Standard
-Для сформулированной в пунктах 2.1-2.2 общей модельной задачи 
-\end_layout
-
-\begin_layout Subsection
 Методы решения
 \end_layout
 
@@ -363,6 +355,77 @@ reference "eq:Start_cond"
 
 \begin_layout Enumerate
 Кубическая
+\end_layout
+
+\begin_layout Subsection
+Структура вычислительного эксперимента
+\end_layout
+
+\begin_layout Standard
+На основе сформулированной в 2.1 - 2.2 общей задачи был проведен ряд вычислительны
+х экспериментов с использованием методов 2.3.
+ Для решения задачи Коши
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_system"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Start_cond"
+
+\end_inset
+
+ проводилась дискретизация по времени интервала 
+\begin_inset Formula $[0,T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+При решении данной системы ОДУ мы можем получить уравнения траектории для
+ каждой частицы.
+ Для того, чтобы иметь возможность точно оценить погрешности реализуемых
+ численных схем, подберем правые части
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:model_problem"
+
+\end_inset
+
+ так, чтобы было возможно нахождение точного аналитического решения.
+ Пусть в поле скорости присутствует только тангенциальная компонента 
+\begin_inset Formula $v_{\tau}(r)=sech^{2}(r)tanh(r)$
+\end_inset
+
+.
+ Тогда правые части системы 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:model_problem"
+
+\end_inset
+
+ примут вид
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align}
+u(x,y) & =-V_{\tau}(r)sin(\Theta),\nonumber \\
+v(x,y) & =+V_{\tau}(r)cos(\Theta)
+\end{align}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1215,6 +1278,10 @@ S_{3,1}(x) & =f_{i}(1-t)^{2}(1+2t)+f_{i+1}t^{2}(3-2t)+m_{i}h_{i}t(1-t)^{2}-m_{i+
  проводить двумерную интерполяцию.
 \end_layout
 
+\begin_layout Paragraph*
+Двумерная полиномиальная интерполяция
+\end_layout
+
 \begin_layout Standard
 В отличие от одномерной интерполяции
 \begin_inset CommandInset citation
@@ -1317,11 +1384,11 @@ P_{km}(x,y)=\sum_{i=0}^{k}\sum_{j=0}^{m}z_{ij}\prod_{\underset{p\neq i}{p=0}}^{k
 \end_layout
 
 \begin_layout Standard
-Как можно заметить, формулы многомерной интерполяции весьма громоздки, поэтому
- на пр
-\end_layout
+Как можно заметить, формулы многомерной лагранжевой интерполяции весьма
+ громоздки, поэтому на практике применяются полиномы невысоких степеней.
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 В вычислительном эксперименте были применены методы билинейной, биквадратичной
  и бикубической интерполяции, получающиеся из формулы 
 \begin_inset CommandInset ref
@@ -1335,6 +1402,99 @@ reference "eq:Lagrange2d"
 \end_inset
 
  соответственно.
+\end_layout
+
+\begin_layout Paragraph*
+Двумерная интерполяция с помощью сплайнов
+\end_layout
+
+\begin_layout Standard
+Функция 
+\begin_inset Formula $S_{n,m,\nu,\mu}(x,y)$
+\end_inset
+
+ является сплайном двух переменных степени 
+\begin_inset Formula $n$
+\end_inset
+
+ дефекта 
+\begin_inset Formula $\nu$
+\end_inset
+
+ по 
+\begin_inset Formula $x$
+\end_inset
+
+ и степени 
+\begin_inset Formula $m$
+\end_inset
+
+ дефекта 
+\begin_inset Formula $\mu$
+\end_inset
+
+ по 
+\begin_inset Formula $y$
+\end_inset
+
+, если в каждой ячейке прямоугольной сетки 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ является многочленом вида: 
+\begin_inset Formula 
+\begin{align}
+S_{n,m,\nu,\mu}(x,y) & =\sum_{\alpha=0}^{n}\sum_{\beta=0}^{m}a_{\alpha\beta}^{ij}(x-x_{i})^{\alpha}(y-y_{j})^{\beta}\label{eq:2dSpline}\\
+ & i=0,...,N-1\; j=0,...,M-1\nonumber \\
+ & S_{n,m,\nu,\mu}(x,y)\in C^{n-\nu,m-\mu}(\Omega)\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+При этом, мн-во сплайнов 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2dSpline"
+
+\end_inset
+
+ является результатом тензорного произведения 
+\begin_inset Formula $S_{n,m,\nu,\mu}(x,y)=S_{n,\nu}(x)\otimes S_{m,\mu}(y)$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "c. 37"
+key "key-4"
+
+\end_inset
+
+.
+ Таким образом, тот же подход последовательной интерполяции применим и для
+ интерполяции с использованием сплайнов.
+ Для двумерной интерполяции поля скорости были использованы кубические сплайны
+ дефекта 1 - 
+\begin_inset Formula $S_{3,3,1,1}(x,y)$
+\end_inset
+
+.
+ Оценки погрешности в этом случае имеют весьма сложный вид, и не будут приводитс
+я в данном тексте.
+ см.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "с. 137"
+key "key-4"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
