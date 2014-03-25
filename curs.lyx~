@@ -871,6 +871,83 @@ f(x_{0},x_{0})=\lim_{x_{1}\rightarrow x_{0}}\frac{f(x_{0})-f(x_{1})}{x_{0}-x_{1}
  на частичные отрезки и на каждом из них приблизить функцию полиномом небольшой
  степени.
  Для этого можно воспользоваться аппаратом сплайн-функций.
+ Сплайном степени 
+\begin_inset Formula $n$
+\end_inset
+
+ дефекта 
+\begin_inset Formula $m$
+\end_inset
+
+ называют кусочно-полиномиальную функцию, определенную на отрезке 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ и имеющую на этом отрезке некоторое число непрерывных производных 
+\begin_inset Formula 
+\begin{equation}
+S_{n,m}(x)=\sum_{k=0}^{n}a_{ik}x^{k},\; x_{i-1}\leq x<x_{i},\; a_{ik}\in\mathbb{R},\; S\in C^{n-m,}[a,b],m<n,\; i=0..n-1\label{eq:Spline}
+\end{equation}
+
+\end_inset
+
+ Преимуществом сплайнов по сравнению с обычной интерполяцией является, во-первых
+, сходимость, и во-вторых, устойчивость процесса вычислений
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+.
+ Если интерполируемая функция имеет большие производные или сильно осцилирует,
+ то сплайновая интерполяция не гарантирует хорошей точности.
+\end_layout
+
+\begin_layout Standard
+На практике наиболее распространены два случая - 
+\begin_inset Formula $S_{1,1}(x)$
+\end_inset
+
+ - сплайн, совпадающий на отрезке с многочленом Ньютона первой степени и
+ соответствущий аппроксимации графика ломаной, и 
+\begin_inset Formula $S_{3,1}(x)$
+\end_inset
+
+ - кубический сплайн с непрерывными производными вплоть до второго порядка.
+ В вычислительном эксперименте применялся интерполяционный кубический сплайн
+ 
+\begin_inset Formula 
+\begin{align}
+S_{3,1}(x) & =f_{i}(1-t)^{2}(1+2t)+f_{i+1}t^{2}(3-2t)+m_{i}h_{i}t(1-t)^{2}-m_{i+1}h_{i}t^{2}(1-t)\label{eq:S31}\\
+ & m_{i}=S'(x_{i}),\; h_{i}=x_{i+1}-x_{i-1},\; x\in[x_{i},x_{i+1}],\; t=\frac{x-x_{i}}{h_{i}}\nonumber 
+\end{align}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+записанный через наклоны, для которого находились неизвестные коэффициенты
+ 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для интерполяции в вычислительном эксперименте использовались кубические
+ сплайн
+\begin_inset Formula 
+\[
+S(x)=f_{i}(1-t)+f_{i+1}t-\frac{h_{i}^{2}}{6}t(1-t)[(2-t)M_{i}+(1+t)M_{i+1}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1000,6 +1077,26 @@ key "key-3"
 \end_inset
 
 , М.: Наука, 1978.-512 стр.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-4"
+
+\end_inset
+
+Завьялов Ю.
+ С., Квасов Б.И., Мирошниченко В.Л.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Методы сплайн-функций.
+\begin_inset Quotes erd
+\end_inset
+
+ - М.:Наука., 1982.-352с
 \end_layout
 
 \end_body

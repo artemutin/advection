@@ -109,7 +109,198 @@
 \end_layout
 
 \begin_layout Section
-Теоретический материал
+Постановка задачи
+\end_layout
+
+\begin_layout Subsection
+Общая постановка задачи
+\end_layout
+
+\begin_layout Standard
+Изучение методов численного интегрирования ОДУ и интерполирования проведем
+ на модельной задаче переноса пассивных безмассовых частиц в двухмерном
+ поле скорости без учета краевых условий.
+\end_layout
+
+\begin_layout Standard
+Частицы заданы своими Лагранжевыми координатами
+\begin_inset Formula $x_{i}(t),\; y_{i}(t)$
+\end_inset
+
+ - координаты
+\end_layout
+
+\begin_layout Subsection
+Общая математическая модель
+\end_layout
+
+\begin_layout Standard
+Дано множество 
+\begin_inset Formula $M$
+\end_inset
+
+ частиц, заданных в момент времени 
+\begin_inset Formula $t_{0}=0$
+\end_inset
+
+ своими Лагранжевыми координатами 
+\begin_inset Formula $(x_{i},y_{i})\in\mathbb{R}^{2}\;\forall i\in M.$
+\end_inset
+
+ Для 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+ задано поле скорости 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\vec{\upsilon}=u(x,y,t)\vec{i}+v(x,y,t)\vec{j}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang russian
+ .
+ Необходимо расчитать процесс переноса частиц в интервале времени 
+\begin_inset Formula $t\in[0,T]$
+\end_inset
+
+, т.е определить 
+\begin_inset Formula $x_{i}(t),y_{i}(t)\;\forall i\in M$
+\end_inset
+
+ - зависимость положения частиц от времени(!!!) 
+\end_layout
+
+\begin_layout Standard
+Математической моделью движения отдельной частицы в поле скорости будет
+ система дифференциальных уравнений вида:
+\begin_inset Formula 
+\begin{align}
+ & \frac{dx_{i}}{dt}=u(x_{i},y_{i},t),\nonumber \\
+ & \frac{dy_{i}}{dt}=v(x_{i},y_{i},t);\label{eq:ODE_system}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Согласно теореме существования решения системы линейных дифференциальных
+ уравнений
+\begin_inset CommandInset citation
+LatexCommand cite
+after "с.126"
+key "key-5"
+
+\end_inset
+
+ для системы 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_system"
+
+\end_inset
+
+ и начальных условий 
+\begin_inset Formula 
+\begin{equation}
+t_{0}=0,\;(x_{0},y_{0})\in\mathbb{R}^{2}\label{eq:Start_cond}
+\end{equation}
+
+\end_inset
+
+ существует решение 
+\begin_inset Formula $x(t),y(t)$
+\end_inset
+
+, определенное на некотором интервале 
+\begin_inset Formula $[0,r]$
+\end_inset
+
+
+\begin_inset Formula $\times\Gamma$
+\end_inset
+
+, где 
+\begin_inset Formula $\Gamma\in\mathbb{R}^{2}$
+\end_inset
+
+ - открытое множество, для которого 
+\begin_inset Formula $u,v\in C^{1}(\Gamma$
+\end_inset
+
+), причем если существует два решения, определенных на общем интервале 
+\begin_inset Formula $t$
+\end_inset
+
+, то они совпадают всюду на этом интервале.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Таким образом, решение задачи сводится к решению 
+\begin_inset Formula $|M|$
+\end_inset
+
+ задач Коши 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_system"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Start_cond"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Методы решения
+\end_layout
+
+\begin_layout Standard
+Для решения данной задачи будет использоваться ряд численных конечно-разностных
+ методов интегрирования ОДУ:
+\end_layout
+
+\begin_layout Enumerate
+Метод Эйлера
+\end_layout
+
+\begin_layout Enumerate
+Метод Эйлера с пересчетом
+\end_layout
+
+\begin_layout Enumerate
+Метод центральных прямоугольник
 \end_layout
 
 \begin_layout Subsection
@@ -936,22 +1127,23 @@ S_{3,1}(x) & =f_{i}(1-t)^{2}(1+2t)+f_{i+1}t^{2}(3-2t)+m_{i}h_{i}t(1-t)^{2}-m_{i+
 
 .
  В общем случае, погрешность интерполяции зависит от 
-\begin_inset Formula $\omega(f)=max(x'-x''),\;\forall x',x''\in[a,b]$
+\begin_inset Formula $\omega(f)=max(f(x')-f(x'')),\;\forall x',x''\in[a,b]$
 \end_inset
 
  и шагов сетки.
- Для сплайнов с нулевыми граничныминаклонами эта оценка принимает вид:
+ Для сплайнов с нулевыми граничными наклонами эта оценка принимает вид:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\parallel S(x)-f(x)\parallel_{C}\leq
-\]
+\begin{align*}
+ & \parallel S(x)-f(x)\parallel_{C}\leq(1+\frac{3}{4}\beta)\omega(f)\\
+ & f(x)\in C[a,b],\;\beta=\frac{max\, h_{i}}{min\, h_{i}}
+\end{align*}
 
 \end_inset
 
-
+,
 \end_layout
 
 \begin_layout Section
@@ -1101,6 +1293,24 @@ key "key-4"
 \end_inset
 
  - М.:Наука., 1982.-352с
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-5"
+
+\end_inset
+
+Шепелева Р.П 
+\begin_inset Quotes eld
+\end_inset
+
+Курс лекций по обыкновенным дифференциальным уравнениям.
+\begin_inset Quotes erd
+\end_inset
+
+ - Владивосток:Издательство Дальневосточного Университета, 2006.
 \end_layout
 
 \end_body
