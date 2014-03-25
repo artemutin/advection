@@ -236,7 +236,7 @@ t_{0}=0,\;(x_{0},y_{0})\in\mathbb{R}^{2}\label{eq:Start_cond}
 \begin_inset Formula $x(t),y(t)$
 \end_inset
 
-, определенное на некотором интервале 
+, определенное на в некоторой области 
 \begin_inset Formula $[0,r]$
 \end_inset
 
@@ -261,7 +261,7 @@ t_{0}=0,\;(x_{0},y_{0})\in\mathbb{R}^{2}\label{eq:Start_cond}
 \begin_inset Newline newline
 \end_inset
 
-Таким образом, решение задачи сводится к решению 
+Таким образом, решение задачи 2.1 сводится к решению 
 \begin_inset Formula $|M|$
 \end_inset
 
@@ -283,11 +283,19 @@ reference "eq:Start_cond"
 \end_layout
 
 \begin_layout Subsection
+Структура вычислительного эксперимента
+\end_layout
+
+\begin_layout Standard
+Для сформулированной в пунктах 2.1-2.2 общей модельной задачи 
+\end_layout
+
+\begin_layout Subsection
 Методы решения
 \end_layout
 
 \begin_layout Standard
-Для решения данной задачи будет использоваться ряд численных конечно-разностных
+Для решения данной задачи был использован ряд численных конечно-разностных
  методов интегрирования ОДУ:
 \end_layout
 
@@ -300,7 +308,61 @@ reference "eq:Start_cond"
 \end_layout
 
 \begin_layout Enumerate
-Метод центральных прямоугольник
+Метод центральных прямоугольников
+\end_layout
+
+\begin_layout Enumerate
+Метод Адамса-Башфорта 3го порядка
+\end_layout
+
+\begin_layout Enumerate
+Метод Рунге-Кутта 4го порядка
+\end_layout
+
+\begin_layout Standard
+Для случая, когда поле скорости задано только в узлах пространственной сетки
+ применялись следующие методы двумерного интерполирования:
+\end_layout
+
+\begin_layout Enumerate
+Билинейная интерполяция
+\end_layout
+
+\begin_layout Enumerate
+Биквадратичная интерполяция
+\end_layout
+
+\begin_layout Enumerate
+Бикубическая интерполяция
+\end_layout
+
+\begin_layout Enumerate
+Интерполяция полиномом Эрмита
+\end_layout
+
+\begin_layout Enumerate
+Интерполяция кубическим сплайном 
+\begin_inset Formula $S_{3,1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Наконец, при дискретизации задачи во времени использовались методы одномерной
+ интерполяции:
+\end_layout
+
+\begin_layout Enumerate
+Линейная
+\end_layout
+
+\begin_layout Enumerate
+Квадратичная
+\end_layout
+
+\begin_layout Enumerate
+Кубическая
 \end_layout
 
 \begin_layout Subsection
@@ -810,14 +872,7 @@ reference "eq:yeva"
 \end_layout
 
 \begin_layout Subsubsection
-Интерполирование алгебраическими многочленами
-\end_layout
-
-\begin_layout Standard
-Алгебраические полиномы являются подробно изученным классом функций, допускающим
- удобную реализацию для ЭВМ, поэтому полиномиальная интерполяция широко
- распространена.
- 
+Одномерная интерполяция
 \end_layout
 
 \begin_layout Paragraph
@@ -1143,7 +1198,143 @@ S_{3,1}(x) & =f_{i}(1-t)^{2}(1+2t)+f_{i+1}t^{2}(3-2t)+m_{i}h_{i}t(1-t)^{2}-m_{i+
 
 \end_inset
 
-,
+
+\end_layout
+
+\begin_layout Subsubsection
+Двумерная интерполяция
+\end_layout
+
+\begin_layout Standard
+Для случая, когда поле скорости известно лишь в некоторых точках пространства
+ 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+ для получения значений компонентов поля скорости в произвольной точке требуется
+ проводить двумерную интерполяцию.
+\end_layout
+
+\begin_layout Standard
+В отличие от одномерной интерполяции
+\begin_inset CommandInset citation
+LatexCommand cite
+after "с. 48"
+key "key-3"
+
+\end_inset
+
+, степень интерполяционного многочлена 
+\begin_inset Formula $P_{n}(x,y)={\displaystyle \sum_{k+m=0}^{n}a_{km}x^{k}y^{m}}$
+\end_inset
+
+ зависит от числа узлов следующим образом: 
+\begin_inset Formula $(n+1)(n+2)/2$
+\end_inset
+
+, при отличном числе узлов часть коэффициентов 
+\begin_inset Formula $P_{n}(x,y)$
+\end_inset
+
+ приходится произвольно обнулять.
+ Кроме того, если в одномерном случае узлы не должны были совпадать, то
+ в двумерном случае необходимо, для 
+\begin_inset Formula $P_{1}(x,y)$
+\end_inset
+
+ чтобы узлы не лежали на одной прямой в плоскости 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+, а для 
+\begin_inset Formula $P_{2}(x,y)$
+\end_inset
+
+ - чтобы узлы не лежали на одной кривой второго порядка и т.д.
+ Иначе определяется и понятие экстраполяции, поскольку, соединив все узлы
+ интерполяции прямыми (гиперплоскостями) мы получим сложную ограниченую
+ область, для которой мы имеем интерполяцию.
+ Поэтому для хорошей многомерной интерполяции сетка должна быть регулярной.
+\end_layout
+
+\begin_layout Standard
+Самым простым подходом для интерполяции на прямоугольной сетке является
+ последовательная интерполяция.
+ В самом деле, для точки 
+\begin_inset Formula $(x^{*},y^{*})$
+\end_inset
+
+ выберем на сетке прямоугольник из 
+\begin_inset Formula $km$
+\end_inset
+
+ узлов, содержащий искомую точку, затем проведем одномерную интерполяцию
+ 
+\begin_inset Formula $P_{k}^{m}(x)$
+\end_inset
+
+ для каждой из 
+\begin_inset Formula $m$
+\end_inset
+
+ строк, после чего вычислим 
+\begin_inset Formula $m$
+\end_inset
+
+ значений 
+\begin_inset Formula $P_{k}^{m}(x*)$
+\end_inset
+
+ и для полученных значений проведем одномерную интерполяцию 
+\begin_inset Formula $P_{m}(y)|_{y=y*}=P_{m}(y^{*})$
+\end_inset
+
+.
+ Такой подход позволяет брать по каждой переменной свое число узлов.
+\begin_inset CommandInset citation
+LatexCommand cite
+after "с. 50"
+key "key-3"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Общая формула при таком подходе аналогична одномерной формуле Лагранжа:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P_{km}(x,y)=\sum_{i=0}^{k}\sum_{j=0}^{m}z_{ij}\prod_{\underset{p\neq i}{p=0}}^{k}\prod_{\underset{q\neq i}{q=0}}^{m}\frac{(x-x_{i})(y-y_{j})}{(x_{p}-x_{i})(y_{q}-y_{j})}\label{eq:Lagrange2d}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Как можно заметить, формулы многомерной интерполяции весьма громоздки, поэтому
+ на пр
+\end_layout
+
+\begin_layout Standard
+В вычислительном эксперименте были применены методы билинейной, биквадратичной
+ и бикубической интерполяции, получающиеся из формулы 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Lagrange2d"
+
+\end_inset
+
+ при 
+\begin_inset Formula $m=k=1,2,3$
+\end_inset
+
+ соответственно.
 \end_layout
 
 \begin_layout Section
