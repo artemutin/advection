@@ -346,40 +346,133 @@ reference "eq:Start_cond"
 \end_layout
 
 \begin_layout Enumerate
-Линейная
+Линейная интерполяция
 \end_layout
 
 \begin_layout Enumerate
-Квадратичная
+Квадратичная интерполяция
 \end_layout
 
 \begin_layout Enumerate
-Кубическая
+Кубическая интерполяция
 \end_layout
 
 \begin_layout Subsection
-Структура вычислительного эксперимента
+Ход вычислительного эксперимента
 \end_layout
 
 \begin_layout Standard
-На основе сформулированной в 2.1 - 2.2 общей задачи был проведен ряд вычислительны
-х экспериментов с использованием методов 2.3.
- Для решения задачи Коши
+Во-первых, для описанной в 2.1 - 2.2 общей задачи было подобрано такое поле
+ скорости, которое допускает получение точного аналитического решения задачи
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:ODE_system"
 
 \end_inset
 
-
+-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Start_cond"
 
 \end_inset
 
- проводилась дискретизация по времени интервала 
-\begin_inset Formula $[0,T$
+.
+ Пусть в поле скорости присутствует только тангенциальная компонента 
+\begin_inset Formula $V_{\tau}(r,t)$
+\end_inset
+
+.
+ Тогда правые части системы 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:model_problem"
+
+\end_inset
+
+ примут вид:
+\begin_inset Formula 
+\begin{align}
+u(x,y) & =-V_{\tau}(r,t)sin(\Theta),\nonumber \\
+v(x,y) & =+V_{\tau}(r,t)cos(\Theta)
+\end{align}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+, где 
+\begin_inset Formula $r=\sqrt{x^{2}+y^{2}},\;\Theta=arctg(\frac{y}{x})$
+\end_inset
+
+ - полярные координаты.
+ Очевидно, что траектория движения частицы в таком поле скорости будет окружност
+ь, т.е 
+\begin_inset Formula $\frac{\partial r}{\partial t}=0$
+\end_inset
+
+.
+ Поэтому несложно получить решение системы в полярных координатах: 
+\begin_inset Formula 
+\begin{align*}
+r & =const,\\
+ & \theta=\frac{V_{\tau}(r,t)}{r}t
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Решение в интересующей нас декартовой системе координат получим обратным
+ преобразованием.
+ 
+\end_layout
+
+\begin_layout Standard
+Для первых тестов было взято постоянное во времени поле скорости с 
+\begin_inset Formula $V_{\tau}(r)=sech^{2}(r)tanh(r)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Промежуток времени 
+\begin_inset Formula $[0,T]$
+\end_inset
+
+ был выбран из расчета, чтобы частица с максимальной скоростью совершила
+ два полных оборота - 
+\begin_inset Formula $T=32.$
 \end_inset
 
 
@@ -426,6 +519,10 @@ v(x,y) & =+V_{\tau}(r)cos(\Theta)
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Теоретический материал
 \end_layout
 
 \begin_layout Subsection
@@ -1661,7 +1758,7 @@ key "key-5"
 \begin_inset Quotes erd
 \end_inset
 
- - Владивосток:Издательство Дальневосточного Университета, 2006.
+ - Владивосток: Издательство Дальневосточного Университета, 2006.
 \end_layout
 
 \end_body
