@@ -24,6 +24,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement h
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref false
@@ -380,7 +381,7 @@ reference "eq:Start_cond"
 
 .
  Пусть в поле скорости присутствует только тангенциальная компонента 
-\begin_inset Formula $v_{\tau}(r,t)$
+\begin_inset Formula $V_{\tau}(r,t)$
 \end_inset
 
 .
@@ -394,16 +395,16 @@ reference "eq:model_problem"
  примут вид:
 \begin_inset Formula 
 \begin{align}
-u(x,y) & =-V_{\tau}(r)sin(\Theta),\nonumber \\
-v(x,y) & =+V_{\tau}(r)cos(\Theta)
+u(x,y) & =-V_{\tau}(r,t)sin(\Theta),\nonumber \\
+v(x,y) & =+V_{\tau}(r,t)cos(\Theta)
 \end{align}
 
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 , где 
 \begin_inset Formula $r=\sqrt{x^{2}+y^{2}},\;\Theta=arctg(\frac{y}{x})$
 \end_inset
@@ -419,7 +420,7 @@ v(x,y) & =+V_{\tau}(r)cos(\Theta)
 \begin_inset Formula 
 \begin{align*}
 r & =const,\\
- & \theta=\frac{\nu_{\tau}(r,t)}{r}t
+ & \theta=\frac{V_{\tau}(r,t)}{r}t+const
 \end{align*}
 
 \end_inset
@@ -428,80 +429,105 @@ r & =const,\\
 \begin_inset Newline newline
 \end_inset
 
-где 
-\begin_inset Formula $\omega(r,t)$
-\end_inset
-
-- угловая скорость.
- Решение в интересующей нас декартовой системе координат получим обратным
+Решение в интересующей нас декартовой системе координат получим обратным
  преобразованием.
+ 
 \end_layout
 
 \begin_layout Standard
-На основе сформулированной в 2.1 - 2.2 общей задачи был проведен ряд вычислительны
-х экспериментов с использованием методов 2.3.
- Для решения задачи Коши
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:ODE_system"
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Start_cond"
-
-\end_inset
-
- проводилась дискретизация по времени интервала 
-\begin_inset Formula $[0,T]$
-\end_inset
-
- c различными шагами
-\end_layout
-
-\begin_layout Standard
-При решении данной системы ОДУ мы можем получить уравнения траектории для
- каждой частицы.
- Для того, чтобы иметь возможность точно оценить погрешности реализуемых
- численных схем, подберем правые части
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:model_problem"
-
-\end_inset
-
- так, чтобы было возможно нахождение точного аналитического решения.
- Пусть в поле скорости присутствует только тангенциальная компонента 
-\begin_inset Formula $v_{\tau}(r)=sech^{2}(r)tanh(r)$
+Для первых тестов было взято постоянное во времени поле скорости с 
+\begin_inset Formula $V_{\tau}(r)=sech^{2}(r)tanh(r)$
 \end_inset
 
 .
- Тогда правые части системы 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:model_problem"
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0col%
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/artem/Dropbox/Octave/Octave 3/Simple/pic/V_tau.jpg
+	scale 50
 
 \end_inset
 
- примут вид
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-2"
 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+График 
+\begin_inset Formula $V_{\tau}(r)$
 \end_inset
 
-:
-\begin_inset Formula 
-\begin{align}
-u(x,y) & =-V_{\tau}(r)sin(\Theta),\nonumber \\
-v(x,y) & =+V_{\tau}(r)cos(\Theta)
-\end{align}
+
+\end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Промежуток времени 
+\begin_inset Formula $[0,T]$
+\end_inset
+
+ был выбран из расчета, чтобы частица с максимальной скоростью совершила
+ два полных оборота - 
+\begin_inset Formula $T=32.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Затем в поле скорости была добавлена периодическая часть, для проверки методов
+ интегрирования в нестационарном поле скорости, 
+\begin_inset Formula $V_{\tau}(r,t)=sech^{2}(r)tanh(r)(1+sin(\lambda t))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Во всех случаях, для оценки погрешности методов применялась следующая формула:
+ 
+\begin_inset Formula $\varepsilon=\sqrt{(x-\tilde{x})^{2}+(y-\tilde{y})^{2}}$
+\end_inset
+
+, где 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+- значение аналитического решения в момент 
+\begin_inset Formula $T$
+\end_inset
+
+, а 
+\begin_inset Formula $(\tilde{x},\tilde{y})$
+\end_inset
+
+ - численное решение задачи в момент времени 
+\begin_inset Formula $T$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -1582,15 +1608,52 @@ key "key-4"
 \end_layout
 
 \begin_layout Standard
-Для сравнения описанных в теоретической части методов использовалась следующая
- модельная задача.
- Рассмотрим систему пассивных частиц, движущихся в двумерном поле скорости.
- Запишем задачу Коши для данной системы
-\begin_inset Formula 
-\begin{align}
-\frac{dx_{i}}{dt} & =u(x_{i},y_{i},t),\; x_{i}(0)=x_{i}^{0}\nonumber \\
-\frac{dy_{i}}{dt} & =v(x_{i},y_{i},t),\; y_{i}(0)=y_{i}^{0}\label{eq:model_problem}
-\end{align}
+Для первого теста было взято стационарное поле скорости, и вдоль оси 
+\begin_inset Formula $Oy$
+\end_inset
+
+ были размещены частицы с координатами (табл), и на временом интервале 
+\begin_inset Formula $[0,T]$
+\end_inset
+
+ были применены 5 методов численного интегрирования ОДУ (2.3) при фиксированном
+ шаге интегрирования по времени 
+\begin_inset Formula $h=0.5$
+\end_inset
+
+.
+ Результаты эксперимента представлены в виде графиков:
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/artem/Dropbox/Octave/Octave 3/Simple/pic/test1.jpg
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Зависимость погрешности от положения точки
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -1598,47 +1661,106 @@ key "key-4"
 \end_layout
 
 \begin_layout Standard
-где 
-\begin_inset Formula $i=1..M$
+Из графика видно, что при малом радиусе начального положения частицы и выбраном
+ шаге метод Эйлера неустойчив(показать??).
+ Убрав с рисунка график погрешности метода Эйлера, увидим, что, максимальную
+ погрешность методы ожидаемо дают для точки близкой к экстремуму тангенциальной
+ скорости:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test1-euler.jpg
+	scale 50
+
 \end_inset
 
-- номер частицы.
- При решении данной системы ОДУ мы можем получить уравнения траектории для
- каждой частицы.
- Для того, чтобы иметь возможность точно оценить погрешности реализуемых
- численных схем, подберем правые части
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:model_problem"
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
- так, чтобы было возможно нахождение точного аналитического решения.
- Пусть в поле скорости присутствует только тангенциальная компонента 
-\begin_inset Formula $v_{\tau}(r)=sech^{2}(r)tanh(r)$
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ 
+\end_layout
+
+\begin_layout Standard
+Во втором тесте выберем точку, для которой методы интегрирования давали
+ наибольшую погрешность в первом тесте - 
+\begin_inset Formula $(0,0.47)$
+\end_inset
+
+, и для этой точки оценим погрешности методов в зависимости от шага интегрирован
+ия - будем брать 
+\begin_inset Formula $h=0.1:0.1:2$
 \end_inset
 
 .
- Тогда правые части системы 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:model_problem"
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test2.jpg
+	lyxscale 50
+	scale 50
 
 \end_inset
 
- примут вид
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-2"
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Зависимость финальной погрешности от шага 
+\begin_inset Formula $h$
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
-:
-\begin_inset Formula 
-\begin{align}
-u(x,y) & =-V_{\tau}(r)sin(\Theta),\nonumber \\
-v(x,y) & =+V_{\tau}(r)cos(\Theta)
-\end{align}
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
