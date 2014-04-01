@@ -396,7 +396,7 @@ reference "eq:model_problem"
 \begin_inset Formula 
 \begin{align}
 u(x,y) & =-V_{\tau}(r,t)sin(\Theta),\nonumber \\
-v(x,y) & =+V_{\tau}(r,t)cos(\Theta)
+v(x,y) & =+V_{\tau}(r,t)cos(\Theta)\label{eq:wind_field}
 \end{align}
 
 \end_inset
@@ -436,7 +436,7 @@ r & =const,\\
 
 \begin_layout Standard
 Для первых тестов было взято постоянное во времени поле скорости с 
-\begin_inset Formula $V_{\tau}(r)=sech^{2}(r)tanh(r)$
+\begin_inset Formula $V_{\tau}(r)=sech^{2}(r)tanh^{2}(r)$
 \end_inset
 
 .
@@ -458,6 +458,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/artem/Dropbox/Octave/Octave 3/Simple/pic/V_tau.jpg
+	lyxscale 50
 	scale 50
 
 \end_inset
@@ -1626,15 +1627,12 @@ key "key-4"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/artem/Dropbox/Octave/Octave 3/Simple/pic/test1.jpg
+	lyxscale 50
 	scale 50
 
 \end_inset
@@ -1662,17 +1660,45 @@ status collapsed
 
 \begin_layout Standard
 Из графика видно, что при малом радиусе начального положения частицы и выбраном
- шаге метод Эйлера неустойчив(показать??).
+ шаге метод Эйлера дает сильную погрешность(показать??).
  Убрав с рисунка график погрешности метода Эйлера, увидим, что, максимальную
  погрешность методы ожидаемо дают для точки близкой к экстремуму тангенциальной
  скорости:
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test1-euler.jpg
+	lyxscale 50
+	scale 50
+
 \end_inset
 
 
-\begin_inset Graphics
-	filename pic/test1-euler.jpg
-	scale 50
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -1701,11 +1727,7 @@ status collapsed
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1731,6 +1753,135 @@ status collapsed
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В этом тесте мы можем наблюдать (по крайней мере, на отрезке от 0 до 1)
+ рост погрешности в соответствии с оценками погрешностей для методов: 
+\begin_inset Formula $O(h^{2})$
+\end_inset
+
+ для методов Эйлера с пересчетом и метода центральных разностей, при этом
+ метод центральных разностей дает несколько меньшую погрешность, вследствие
+ того, что оценка погрешности для него имеет меньшую константу-множитель;
+ 
+\begin_inset Formula $O(h^{3})$
+\end_inset
+
+ - для метода Адамса и 
+\begin_inset Formula $O(h^{4})$
+\end_inset
+
+ для метода Рунге-Кутта 4го порядка.
+ Картины спадов и подъемов начиная с шага 1 и далее для большинства методов
+ (а для метода Эйлера и еще раньше) связаны с возрастанием погрешности до
+ такой степени, что расчетное движение частицы начинает обгонять (или отставать)
+ по фазе от реальной траектории, при этом при изменении шага в момент измерения
+ погрешности меняется разность фаз, что оказывает сильное влияние на погрешность
+ в декартовых координатах.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test2-r.jpg
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/test2-theta.jpg
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+График зависимости погрешности радиуса 
+\begin_inset Formula $r$
+\end_inset
+
+(слева) и 
+\begin_inset Formula $\theta$
+\end_inset
+
+(справа) от шага 
+\begin_inset Formula $h$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В третьем тесте рассмотрим динамику роста погрешности численных решений.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test3-08.jpg
+	lyxscale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/test3-04.jpg
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+График роста погрешности от числа итераций (шаг 
+\begin_inset Formula $h=0.8$
+\end_inset
+
+ слева, 
+\begin_inset Formula $h=0.4$
+\end_inset
+
+ справа)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 
 \end_layout
@@ -1738,6 +1889,125 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+По итогам этого теста можно окончательно заключить, что метод Эйлера непосредств
+енно не пригоден для решения данной задачи, т.к даже существенное уменьшение
+ шага (вплоть до 
+\begin_inset Formula $0.01$
+\end_inset
+
+) не дает уменьшения погрешности меньше 
+\begin_inset Formula $0.3$
+\end_inset
+
+.
+ А остальные методы показывают сходимость, позволяющую, пусть и с разными
+ шагами, брать их для решения задачи.
+ 
+\end_layout
+
+\begin_layout Standard
+Все предыдущие тесты были проведены при условии стационарности поля скорости,
+ теперь усложним задачу, добавив к полю скорости зависимость от времени:
+ в 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:wind_field"
+
+\end_inset
+
+ изменим 
+\begin_inset Formula $V_{\tau}(r,t)=sech^{2}(r)tanh^{2}(r)(1+sin(t*P))$
+\end_inset
+
+, где 
+\begin_inset Formula $P$
+\end_inset
+
+ - параметр, определяющий период изменения тангенциальной скорости: 
+\begin_inset Formula $T=\frac{2\pi}{P},\; P\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test4-04.jpg
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/test4-01.jpg
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Зависимость погрешности от 
+\begin_inset Formula $P$
+\end_inset
+
+(слева 
+\begin_inset Formula $h=0.4$
+\end_inset
+
+, справа 
+\begin_inset Formula $h=0.1$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Таким образом, непосредственно видно, что добавление даже незначительной
+ периодичности к полю скорости, вызывает рост погрешностей до 2х раз(По
+ сравнению с рис.6), поэтому для получения точности порядка 
+\begin_inset Formula $0.1$
+\end_inset
+
+ даже для 
+\begin_inset Formula $P=8$
+\end_inset
+
+ требуется уменьшить шаг примерно до 
+\begin_inset Formula $0.1$
+\end_inset
+
+.
+ Очевидно, этот рост погрешности связан с ростом погрешности фазы 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
