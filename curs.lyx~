@@ -24,21 +24,36 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement H
 \paperfontsize 12
 \spacing onehalf
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
 \use_mathdots 1
-\cite_engine basic
+\cite_engine natbib_numerical
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 1
+\branch 1
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -64,28 +79,277 @@
 
 \begin_body
 
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ РОССИЙСКОЙ ФЕДЕРАЦИИ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Федеральное государственное автономное образовательное учреждение 
+\begin_inset Newline newline
+\end_inset
+
+высшего профессионального образования 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+«Дальневосточный Федеральный Университет»
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.1ex"
+width "100col%"
+height "4pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\series bold
+ШКОЛА ЕСТЕСТВЕННЫХ НАУК
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\series bold
+Кафедра информатики, математического и компьютерного моделирования
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Утин Артем Сергеевич
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+ТЕМА
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\series bold
+КУРСОВАЯ РАБОТА
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align right
+Студент гр.
+ Б8303б ___________
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align right
+Руководитель 
+\begin_inset Newline newline
+\end_inset
+
+___________ А.А.
+ Баранов
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align left
+Регистрационный №________ ___________ _________________
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align left
+« ___» _______________ 20 г.
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align right
+Студент гр.
+ Б8303б __________ Руководитель 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align right
+_____________ В.И.Иванова Оценка ________________________ ____________ ___________
+________ «_____» ________________ 20 г.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Оглавление
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Введение
 \end_layout
 
 \begin_layout Standard
-Гидродинамические процессы перемешивания традиционно находятся в центре
- внимания ученых в области фундаментальных и прикладных наук.
- Результаты иследования данных процессов находят широкое применение в химической
- и фармацевтической промышленности, экологии.
+В современном математическом моделировании широко распространены алгоритмы
+ под общим названием 
+\begin_inset Quotes eld
+\end_inset
+
+методы частиц
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Общей характерной особенностью данных методов является концепция перехода
+ к дискретной аппроксимации - она заключается в представлении среды в виде
+ конечного множества взаимодействующих друг с другом частиц, каждая из которых
+ является носителем некоторых физических характеристик.
+ Численные методы на их основе часто используются для проведения масштабных
+ вычислительных экспериментов в различных областях науки.
+ Так разнавидности этих методов используются при расчетах физических процессов
+ в установках термоядерного синтеза, этими методами проводились расчеты
+ обтекания сложных космических аппаратов типа 
+\begin_inset Quotes eld
+\end_inset
+
+Буран
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset CommandInset citation
+LatexCommand citet
+key "key-6"
+
+\end_inset
+
  
 \end_layout
 
 \begin_layout Standard
-Процесс перемешивания представляет собой сложное физическое явление, в котором
- можно выделить два основных механизма - диффузионный, связанный с движением
- молекул, и конвективный, вызванный движением сплошной среды.
- Во многих прикладных задачах анализ временных масштабов позволяет исключить
- диффузионные эффекты и рассматриваемая задача сводится к анализу процессов
- перемешивания при наличии деформации исходной области, вызванной только
- полем скорости плоского (ламинарного) течения.
- Такая задача в современной литературе носит название задача об адвекции
- жидкости в известном поле скорости.
+В частности, подгруппа методов 
+\begin_inset Quotes eld
+\end_inset
+
+частицы-в-ячейках
+\begin_inset Quotes erd
+\end_inset
+
+ находит широкое применение в задачах гидродинамики.
+ Одним из этапов в общей схеме данных алгоритмов связан с решением задачи
+ переноса частиц.
+ Применительно к гидродинамическим процессам перемешивания среды данная
+ задача в современной литературе получила название 
+\begin_inset Quotes eld
+\end_inset
+
+задача об адвекции частицы в известном поле скорости
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -97,37 +361,29 @@
 \end_layout
 
 \begin_layout Standard
-Целью данной работы является изучение методов численного интегрирования
- ОДУ и интерполирования, сравнение этих методов по точности и вычислительной
- эффективности, с учетом их комбинирования.
+Целью данной работы является проведение сравнительного анализа методов численног
+о интегрирования ОДУ и интерполирования, сравнение этих методов по точности
+ и вычислительной эффективности, с учетом их комбинирования.
 \end_layout
 
 \begin_layout Standard
 В первой части работы приводится теоретическое описание рассматриваемых
  методов, во второй части данные методы тестируются на модельной задаче
- и в рамках численного эксперимента проводится их сравнение и оценка.
+ и в рамках численного эксперимента проводится их практическое сравнение.
 \end_layout
 
 \begin_layout Section
 Постановка задачи
 \end_layout
 
-\begin_layout Subsection
-Общая постановка задачи
-\end_layout
-
 \begin_layout Standard
-Изучение методов численного интегрирования ОДУ и интерполирования проведем
- на модельной задаче переноса пассивных безмассовых частиц в двухмерном
- поле скорости без учета краевых условий.
-\end_layout
-
-\begin_layout Standard
-Частицы заданы своими Лагранжевыми координатами
-\begin_inset Formula $x_{i}(t),\; y_{i}(t)$
-\end_inset
-
- - координаты
+Рассмотрим методы решения уравнения движения частиц, т.е обыкновенных дифференциа
+льных уравнений, а также возникающие при дальнейшей дискретизации задачи
+ методы одно- и двумерного интерполирования на прямоугольных етках.
+ Приведем теоретические и практические оценки сходимости, устойчивости и
+ вычислительной сложности алгоритмов с использованием модельной задачи лагранжев
+а переноса пассивных частиц в двумерном поле скорости.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -144,7 +400,7 @@
 \end_inset
 
  своими Лагранжевыми координатами 
-\begin_inset Formula $(x_{i},y_{i})\in\mathbb{R}^{2}\;\forall i\in M.$
+\begin_inset Formula $(x_{i},y_{i})\in\mathbb{\Gamma\subset R}^{2}\;\forall i\in M.$
 \end_inset
 
  Для 
@@ -165,7 +421,7 @@
 \color none
 \lang english
 
-\begin_inset Formula $\vec{\upsilon}=u(x,y,t)\vec{i}+v(x,y,t)\vec{j}$
+\begin_inset Formula $V=[v(x,y,t),\, u(x,y,t)]$
 \end_inset
 
 
@@ -195,7 +451,7 @@
 
 \begin_layout Standard
 Математической моделью движения отдельной частицы в поле скорости будет
- система дифференциальных уравнений вида:
+ система обыкновенных дифференциальных уравнений вида:
 \begin_inset Formula 
 \begin{align}
  & \frac{dx_{i}}{dt}=u(x_{i},y_{i},t),\nonumber \\
@@ -283,7 +539,63 @@ reference "eq:Start_cond"
 \end_layout
 
 \begin_layout Subsection
-Методы решения
+Дискретизация задачи
+\end_layout
+
+\begin_layout Standard
+Для использования методами численного интегрирования на отрезке 
+\begin_inset Formula $[0,T]$
+\end_inset
+
+ вводилась равномерная сетка 
+\begin_inset Formula $\omega_{1}(t,h)=\{rh,\; r=0,1,...,N_{1},\; h=\frac{T}{N_{1}}\}$
+\end_inset
+
+ c различными значениями 
+\begin_inset Formula $N_{1}$
+\end_inset
+
+.
+ В ряде тестов применялась дискретизация пространства и вводилась двумерная
+ прямоугольная равномерная сетка 
+\begin_inset Formula $\omega_{2}(\Gamma,h_{2})=\{(x_{i},y_{j})=(-3+h_{2}i,-3+h_{2}j),\; i,j=0,1,...,N_{2},\; h_{2}=\frac{6}{N_{2}}\}$
+\end_inset
+
+, которая учитывала центральную симметрию поля скорости, а также то, что
+ 
+\begin_inset Formula $V_{\tau}\approx0$
+\end_inset
+
+ при 
+\begin_inset Formula $r\rightarrow3$
+\end_inset
+
+.
+ Кроме того, в последних тестах поле скорости 
+\begin_inset Formula $V_{\tau}(r,t)$
+\end_inset
+
+ было задано в узлах сетки на 
+\begin_inset Formula $[0,T]$
+\end_inset
+
+ 
+\begin_inset Formula $\omega_{3}(t,h_{3})=\{rh,\; r=0,1,...,N_{3},\; h=\frac{T}{N_{3}}\}$
+\end_inset
+
+, где 
+\begin_inset Formula $N_{3}$
+\end_inset
+
+в общем случае не совпадает с 
+\begin_inset Formula $N_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Примененные методы
 \end_layout
 
 \begin_layout Standard
@@ -355,178 +667,6 @@ reference "eq:Start_cond"
 
 \begin_layout Enumerate
 Кубическая интерполяция
-\end_layout
-
-\begin_layout Subsection
-Ход вычислительного эксперимента
-\end_layout
-
-\begin_layout Standard
-Во-первых, для описанной в 2.1 - 2.2 общей задачи было подобрано такое поле
- скорости, которое допускает получение точного аналитического решения задачи
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:ODE_system"
-
-\end_inset
-
--
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Start_cond"
-
-\end_inset
-
-.
- Пусть в поле скорости присутствует только тангенциальная компонента 
-\begin_inset Formula $V_{\tau}(r,t)$
-\end_inset
-
-.
- Тогда правые части системы 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:model_problem"
-
-\end_inset
-
- примут вид:
-\begin_inset Formula 
-\begin{align}
-u(x,y) & =-V_{\tau}(r,t)sin(\Theta),\nonumber \\
-v(x,y) & =+V_{\tau}(r,t)cos(\Theta)
-\end{align}
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-, где 
-\begin_inset Formula $r=\sqrt{x^{2}+y^{2}},\;\Theta=arctg(\frac{y}{x})$
-\end_inset
-
- - полярные координаты.
- Очевидно, что траектория движения частицы в таком поле скорости будет окружност
-ь, т.е 
-\begin_inset Formula $\frac{\partial r}{\partial t}=0$
-\end_inset
-
-.
- Поэтому несложно получить решение системы в полярных координатах: 
-\begin_inset Formula 
-\begin{align*}
-r & =const,\\
- & \theta=\frac{V_{\tau}(r,t)}{r}t+const
-\end{align*}
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Решение в интересующей нас декартовой системе координат получим обратным
- преобразованием.
- 
-\end_layout
-
-\begin_layout Standard
-Для первых тестов было взято постоянное во времени поле скорости с 
-\begin_inset Formula $V_{\tau}(r)=sech^{2}(r)tanh(r)$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Wrap figure
-lines 0
-placement o
-overhang 0col%
-width "50col%"
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/artem/Dropbox/Octave/Octave 3/Simple/pic/V_tau.jpg
-	scale 50
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-График 
-\begin_inset Formula $V_{\tau}(r)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Промежуток времени 
-\begin_inset Formula $[0,T]$
-\end_inset
-
- был выбран из расчета, чтобы частица с максимальной скоростью совершила
- два полных оборота - 
-\begin_inset Formula $T=32.$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-Затем в поле скорости была добавлена периодическая часть, для проверки методов
- интегрирования в нестационарном поле скорости, 
-\begin_inset Formula $V_{\tau}(r,t)=sech^{2}(r)tanh(r)(1+sin(\lambda t))$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Во всех случаях, для оценки погрешности методов применялась следующая формула:
- 
-\begin_inset Formula $\varepsilon=\sqrt{(x-\tilde{x})^{2}+(y-\tilde{y})^{2}}$
-\end_inset
-
-, где 
-\begin_inset Formula $(x,y)$
-\end_inset
-
-- значение аналитического решения в момент 
-\begin_inset Formula $T$
-\end_inset
-
-, а 
-\begin_inset Formula $(\tilde{x},\tilde{y})$
-\end_inset
-
- - численное решение задачи в момент времени 
-\begin_inset Formula $T$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
@@ -845,6 +985,70 @@ k_{3}=f(t_{n}+\frac{\tau}{2},y_{n}+\frac{\tau k_{2}}{2}), & k_{4}=f(t_{n}+\tau,y
 
 \end_layout
 
+\begin_layout Standard
+Точные оценки погрешности для методов Рунге-Кутта достаточно громоздки и
+ имееют вид
+\begin_inset CommandInset citation
+LatexCommand cite
+after ", c.223"
+key "key-1"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+|y_{n}-u_{n}|\leq Te^{\alpha T}\underset{0\leq i\leq n-1}{max}(\psi_{j}),
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+где 
+\begin_inset Formula $\psi_{j}$
+\end_inset
+
+ - невязка, 
+\begin_inset Formula $n\tau<T,$
+\end_inset
+
+ 
+\begin_inset Formula $\alpha=\sigma Lm(1+Lb\tau)^{n-1}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma=max|\sigma_{i}|,$
+\end_inset
+
+ 
+\begin_inset Formula $b=max|b_{ij}|$
+\end_inset
+
+.
+ В предположении 
+\begin_inset Formula $f=f(x)$
+\end_inset
+
+ оценки упрощаются при использовании формул численного интегрирования, соответст
+вующих методам Рунге-Кутты
+\begin_inset CommandInset citation
+LatexCommand cite
+after ", c.249"
+key "key-3"
+
+\end_inset
+
+: 
+\begin_inset Formula $R_{\text{сред}}=\frac{T}{24}h^{2}max|f''|,\; R_{\text{трап}}=\frac{T}{12}h^{2}max|f''|,\; R_{\text{симп}}=\frac{T}{2880}h^{4}max|f^{iv}|$
+\end_inset
+
+ которые соответствуют методу средних прямоугольников, методу Эйлера с пересчето
+м и методу Рунге-Кутта 4 порядка.
+\end_layout
+
 \begin_layout Subsubsection
 Методы Адамса
 \end_layout
@@ -1148,128 +1352,7 @@ L_{n}(x)=f(x_{0})+(x-x_{0})f(x_{0},x_{1})+(x-x_{0})(x-x_{1})f(x_{0},x_{1},x_{2})
 \end_layout
 
 \begin_layout Paragraph
-Интерполяционный многочлен Эрмита
-\end_layout
-
-\begin_layout Standard
-Важным вопросом является вопрос сходимости интерполяционного процесса 
-\begin_inset Formula $L_{n}(x)\rightarrow f(x)$
-\end_inset
-
-.
- Увеличение числа узлов интерполяции не всегда дает увеличение точности
- приближения исходной функции(модуль).
- Поэтому методы полиномиальной интерполяции получили дальнейшее развитие.
- Для лучшего приближения функции можно потребовать в узлах не только равенства
- 
-\begin_inset Formula $L_{n}(x_{j})=f(x_{j})\;\forall j$
-\end_inset
-
-, но и равенства производных первого и более высоких порядков.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-3"
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-Для того, чтобы построить интерполяционный полином Эрмита 
-\begin_inset Formula $H_{n}(x,x_{0},x_{1},...,x_{n})$
-\end_inset
-
- по 
-\begin_inset Formula $n+1$
-\end_inset
-
- узлу, построим интерполяционный полином Ньютона 
-\begin_inset Formula $L_{n}(x,x_{0},x_{1},...,x_{n})$
-\end_inset
-
-, затем начиная приближать 
-\begin_inset Formula $x_{n}\rightarrow x_{n-1}$
-\end_inset
-
- средний наклон все более будет стремиться к значению производной и 
-\begin_inset Formula $L_{n}^{*}(x,x_{0},x_{1},...,x_{n-1},x_{n-1})$
-\end_inset
-
- будет правильно передавать значение производной в точке 
-\begin_inset Formula $x_{n-1}$
-\end_inset
-
-.
- Подобным построением получаем (эмпирическую) формулу для полинома Эрмита
- 
-\begin_inset Formula 
-\begin{align}
-H_{n}(x,x_{0},x_{1},...,x_{n}) & =L_{n}(\underbrace{x_{0},x_{0},...,x_{0}}_{m_{0}},\underbrace{x_{1},x_{1},...,x_{1}}_{m_{1}},...,\underbrace{x_{p},x_{p},...,x_{p}}_{m_{n}})\nonumber \\
- & \sum_{k=0}^{p}m_{k}=n+1\label{eq:Herm}
-\end{align}
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-которая в узле 
-\begin_inset Formula $x_{k}$
-\end_inset
-
- правильно передает значение функции и ее производной до порядка 
-\begin_inset Formula $m_{k}-1$
-\end_inset
-
-.
- Оценка погрешности в этом случае следует из 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Newton_err"
-
-\end_inset
-
- и имеет вид 
-\begin_inset Formula 
-\begin{equation}
-|f(x)-H_{n}(x)|\leq\frac{M_{n+1}}{(n+1)!}|\prod_{i=0}^{n}(x-x_{i})^{m_{i}}|,\; M_{n+1}=max|f^{(n-1)}(\xi)|\label{eq:Herm_err}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Т.к в формуле 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Herm"
-
-\end_inset
-
- содержатся разделенные разности, то при вычислении в кратных узлах будут
- возникать неопределенности типа 
-\begin_inset Formula $\frac{0}{0}$
-\end_inset
-
-.
- Если кратность узла не выше второй, то можно воспользоваться предельным
- переходом 
-\begin_inset Formula 
-\[
-f(x_{0},x_{0})=\lim_{x_{1}\rightarrow x_{0}}\frac{f(x_{0})-f(x_{1})}{x_{0}-x_{1}}=f'(x_{0})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Интерполяция сплайнами
+Интерполяция Эрмитовым кубическим сплайном
 \end_layout
 
 \begin_layout Standard
@@ -1305,8 +1388,26 @@ S_{n,m}(x)=\sum_{k=0}^{n}a_{ik}x^{k},\; x_{i-1}\leq x<x_{i},\; a_{ik}\in\mathbb{
 
 \end_inset
 
+ Интерполяционным сплайном естестественно назвать сплайн, для которого на
+ сетке 
+\begin_inset Formula $\omega(x,N)$
+\end_inset
+
+ справедливо 
+\begin_inset Formula $S_{n,m}(x_{i})=f_{i},\, i=0..N$
+\end_inset
+
+.
  Преимуществом сплайнов по сравнению с обычной интерполяцией является, во-первых
-, сходимость, и во-вторых, устойчивость процесса вычислений
+, сходимость, и во-вторых, устойчивость процесса вычислений.
+\end_layout
+
+\begin_layout Standard
+Для построения интерполяционных сплайнов в общем случае требуется решать
+ СЛАУ, размерность которой зависит от интерполяционных условий и может быть
+ велика.
+ Однако для сплайнов, носящих название Эрмитовых или локальных эта система
+ распадается на совокупность подсистем небольшой размерности
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
@@ -1314,22 +1415,120 @@ key "key-1"
 \end_inset
 
 .
- Если интерполируемая функция имеет большие производные или сильно осцилирует,
- то сплайновая интерполяция не гарантирует хорошей точности.
 \end_layout
 
 \begin_layout Standard
-На практике наиболее распространены два случая - 
-\begin_inset Formula $S_{1,1}(x)$
+Пусть дана сетка 
+\begin_inset Formula $\omega(x)=x_{0}<x_{1}<...<x_{n}$
 \end_inset
 
- - сплайн, совпадающий на отрезке с многочленом Ньютона первой степени и
- соответствущий аппроксимации графика ломаной, и 
+ на которой затабулированы значения функции 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ и ее первой производной.
+ Тогда Эрмитовым кубическим сплайном назовем функцию 
+\begin_inset Formula $S_{3,2}(f,x),$
+\end_inset
+
+ удовлетворяющую условиям:
+\begin_inset Formula 
+\begin{align*}
+S_{3,2}(x) & =a_{i0}+a_{i1}(x-x_{i})+a_{i2}(x-x_{i})^{2}+a_{i3}(x-x_{i})^{3},\; i=0..n\\
+ & S_{3,2}(x_{i})=f_{i},\, S_{3,2}^{'}(x_{i})=f_{i}^{'},i=0,..,N
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Оценка погрешности интерполяции для данного сплайна 
+\begin_inset Formula $R(x)\leq\frac{3}{8}\bar{h}\omega(f')$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Потенциальной проблемой, мешающей использованию Эрмитовых сплайнов для интерполя
+ции является необходимость табуляции значений производных.
+ Однако ценой некоторого увеличения погрешности можно воспользоваться приближенн
+ыми формулами для вычисления производных с помощью конечных разностей
+\begin_inset CommandInset citation
+LatexCommand citet
+after "с.73"
+key "key-4"
+
+\end_inset
+
+.
+ В этом случае оценка погрешности будет иметь следующий вид 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $R(x)\leq\frac{5}{8}\bar{h}\omega(f')$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang russian
+.
+ В рамках численного эксперимента был применен этот метод построения интерполяци
+онного Эрмитового сплайна.
+\end_layout
+
+\begin_layout Paragraph
+Интерполяция сплайнами класса 
+\begin_inset Formula $S_{3,1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Еще одним широко применяемым для интерполяции подвидом сплайн-функций является
+ класс сплайнов 
 \begin_inset Formula $S_{3,1}(x)$
 \end_inset
 
- - кубический сплайн с непрерывными производными вплоть до второго порядка.
- В вычислительном эксперименте применялся интерполяционный кубический сплайн
+.
+ Этот сплайн происходит из Эрмитового сплайна 
+\begin_inset Formula $S_{3,2}(x)$
+\end_inset
+
+ при наложении на сплайн условия непрерывности вторых производных сплайна.
+ Следствием этого является потеря свойства локальности сплайна, и необходимость
+ решения трехдиагональной СЛАУ размерности 
+\begin_inset Formula $N-2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+В вычислительном эксперименте применялся интерполяционный кубический сплайн
  
 \begin_inset Formula 
 \begin{align}
@@ -1581,9 +1780,21 @@ key "key-4"
 
 .
  Таким образом, тот же подход последовательной интерполяции применим и для
- интерполяции с использованием сплайнов.
- Для двумерной интерполяции поля скорости были использованы кубические сплайны
- дефекта 1 - 
+ двумерной интерполяции с использованием сплайнов.
+ Для двумерной интерполяции поля скорости были использованы происходящие
+ из соответственно Эрмитового интерполяционного сплайна 
+\begin_inset Formula $S_{3,2}(x)$
+\end_inset
+
+ и кубического сплайна 
+\begin_inset Formula $S_{3,1}(x)$
+\end_inset
+
+ кубические сплайны 
+\begin_inset Formula $S_{3,3,2,2}(x,y)$
+\end_inset
+
+ и 
 \begin_inset Formula $S_{3,3,1,1}(x,y)$
 \end_inset
 
@@ -1604,6 +1815,134 @@ key "key-4"
 
 \begin_layout Section
 Вычислительный эксперимент
+\end_layout
+
+\begin_layout Standard
+Во-первых, для описанной в 2.1 - 2.2 общей задачи было подобрано такое поле
+ скорости, которое допускает получение точного аналитического решения задачи
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_system"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Start_cond"
+
+\end_inset
+
+.
+ Пусть в поле скорости присутствует только тангенциальная компонента 
+\begin_inset Formula $V_{\tau}(r,t)$
+\end_inset
+
+.
+ Тогда правые части системы 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:model_problem"
+
+\end_inset
+
+ примут вид:
+\begin_inset Formula 
+\begin{align}
+u(x,y) & =-V_{\tau}(r,t)sin(\Theta),\nonumber \\
+v(x,y) & =+V_{\tau}(r,t)cos(\Theta)\label{eq:wind_field}
+\end{align}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+, где 
+\begin_inset Formula $r=\sqrt{x^{2}+y^{2}},\;\Theta=arctg(\frac{y}{x})$
+\end_inset
+
+ - полярные координаты.
+ Из теоретической механики известно, что траектория движения частицы в таком
+ поле скорости будет окружность, т.е 
+\begin_inset Formula $\frac{\partial r}{\partial t}=0$
+\end_inset
+
+.
+ Поэтому несложно получить решение системы в полярных координатах: 
+\begin_inset Formula 
+\begin{align*}
+r & =const,\\
+ & \theta=\frac{V_{\tau}(r,t)}{r}t+const
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Решение в интересующей нас декартовой системе координат получим обратным
+ преобразованием координат.
+ 
+\end_layout
+
+\begin_layout Standard
+Для первых тестов было взято постоянное во времени поле скорости с 
+\begin_inset Formula $V_{\tau}(r)=sech^{2}(r)tanh^{2}(r)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Промежуток времени 
+\begin_inset Formula $[0,T]$
+\end_inset
+
+ был выбран из расчета, чтобы частица с максимальной скоростью совершила
+ два полных оборота - 
+\begin_inset Formula $T=32.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Затем в поле скорости была добавлена периодическая часть, для проверки методов
+ интегрирования в нестационарном поле скорости, 
+\begin_inset Formula $V_{\tau}(r,t)=sech^{2}(r)tanh(r)(1+sin(\lambda t))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Во всех случаях, для оценки погрешности методов применялась следующая формула:
+ 
+\begin_inset Formula $\varepsilon=\sqrt{(x-\tilde{x})^{2}+(y-\tilde{y})^{2}}$
+\end_inset
+
+, где 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+- значение аналитического решения в момент 
+\begin_inset Formula $T$
+\end_inset
+
+, а 
+\begin_inset Formula $(\tilde{x},\tilde{y})$
+\end_inset
+
+ - численное решение задачи в момент времени 
+\begin_inset Formula $T$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1628,12 +1967,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/artem/Dropbox/Octave/Octave 3/Simple/pic/test1.jpg
+	lyxscale 50
 	scale 50
 
 \end_inset
@@ -1661,22 +1997,30 @@ status open
 
 \begin_layout Standard
 Из графика видно, что при малом радиусе начального положения частицы и выбраном
- шаге метод Эйлера неустойчив(показать??).
+ шаге метод Эйлера дает сильную погрешность(показать??).
  Убрав с рисунка график погрешности метода Эйлера, увидим, что, максимальную
  погрешность методы ожидаемо дают для точки близкой к экстремуму тангенциальной
  скорости:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename pic/test1-euler.jpg
+	filename pic/test1.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/vtau.png
+	lyxscale 50
 	scale 50
 
 \end_inset
@@ -1685,7 +2029,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
+Погрешности решения (слева) и профиль скорости в зависимости от радиуса
 \end_layout
 
 \end_inset
@@ -1727,12 +2071,16 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename pic/test2.jpg
+	filename pic/test2.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/test2-h.png
 	lyxscale 50
 	scale 50
 
@@ -1742,7 +2090,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Зависимость финальной погрешности от шага 
+Зависимость максимальной погрешности от шага 
 \begin_inset Formula $h$
 \end_inset
 
@@ -1754,6 +2102,63 @@ status open
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Видно, что за исключением метода Эйлера, динамика роста погрешностей в зависимос
+ти от шага соответствует теоретическим оценкам.
+\end_layout
+
+\begin_layout Standard
+В третьем тесте зафиксируем отдельную частицу и рассмотрим динамику роста
+ погрешности во времени.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test3-08.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/test3-04.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+График роста погрешности от числа итераций (шаг 
+\begin_inset Formula $0.8$
+\end_inset
+
+ слева, 
+\begin_inset Formula $h=0.4$
+\end_inset
+
+ справа)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 
 \end_layout
@@ -1761,6 +2166,338 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+По итогам этого теста можно окончательно заключить, что метод Эйлера непосредств
+енно не пригоден для решения данной задачи, т.к даже существенное уменьшение
+ шага (вплоть до 
+\begin_inset Formula $0.01$
+\end_inset
+
+) не дает уменьшения погрешности меньше 
+\begin_inset Formula $0.3$
+\end_inset
+
+.
+ А остальные методы показывают сходимость, позволяющую, пусть и с разными
+ шагами, брать их для решения задачи.
+ 
+\end_layout
+
+\begin_layout Standard
+Все предыдущие тесты были проведены при условии стационарности поля скорости,
+ теперь усложним задачу, добавив к полю скорости зависимость от времени:
+ в 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:wind_field"
+
+\end_inset
+
+ изменим 
+\begin_inset Formula $V_{\tau}(r,t)=sech^{2}(r)tanh^{2}(r)(1+sin(t*P))$
+\end_inset
+
+, где 
+\begin_inset Formula $P$
+\end_inset
+
+ - параметр, определяющий период изменения тангенциальной скорости: 
+\begin_inset Formula $T=\frac{2\pi}{P},\; P\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test4-04.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/test4-01.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Зависимость погрешности от 
+\begin_inset Formula $P$
+\end_inset
+
+(слева 
+\begin_inset Formula $h=0.4$
+\end_inset
+
+, справа 
+\begin_inset Formula $h=0.1$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Таким образом, непосредственно видно, что добавление даже незначительной
+ периодичности к полю скорости, вызывает рост погрешностей до 2х раз(По
+ сравнению с рис.6), поэтому для получения точности порядка 
+\begin_inset Formula $0.1$
+\end_inset
+
+ даже для 
+\begin_inset Formula $P=8$
+\end_inset
+
+ требуется уменьшить шаг примерно до 
+\begin_inset Formula $0.1$
+\end_inset
+
+.
+ Очевидно, этот рост погрешности связан с ростом погрешности полярного угла
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Помимо нестационарного поля скорости, еще одним осложняющим задачу фактором
+ будет то, что поле скорости может быть задано только в узлах сетки.
+ Теперь потребуется процедура интерполяции для определения значений скорости
+ в произвольных точках.
+ Отберем два наиболее точных и интересных метода по результатам предыдущих
+ тестов - методы Адамса и Рунге-Кутта 4го порядка и проведем для мн-ва точек,
+ как и в тесте 1, тест на финальную погрешность, при шаге сетки по времени
+ 
+\begin_inset Formula $h=0.4$
+\end_inset
+
+, шаге сетки по пространству 
+\begin_inset Formula $h_{2}=0.25$
+\end_inset
+
+ и стационарном поле скорости:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test5-1.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/test5-2.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+ Сравнение методов интерполяции для методов Адамса(слева) и Рунге-Кутта
+ 4 порядка
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Видно, что наибольшую погрешность дают методы интерполяции при близких к
+ центру положениях частицы и при максимальных значениях скорости 
+\begin_inset Formula $V_{\tau}$
+\end_inset
+
+ Попробуем проанализировать зависимость погрешности для частицы 
+\begin_inset Formula $(0,0.1)$
+\end_inset
+
+ от шага пространственной сетки.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test6-1.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/test6-2.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Зависимость финальной погрешности от шага 
+\begin_inset Formula $h_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В целом можно отметить схожее поведение погрешности для обоих методов.
+ Можно отметить, что при шаге 
+\begin_inset Formula $h=0.1$
+\end_inset
+
+ наблюдается практически полное равенство погрешностей c точностью порядка
+ 
+\begin_inset Formula $0.01$
+\end_inset
+
+, однако абсолютно лучшим и устойчивым при дальнейшем увеличении шага показала
+ себя интерполяция кубическими сплайнами 
+\begin_inset Formula $S_{3,1}$
+\end_inset
+
+.(Вычислительная сложность???!!!)
+\end_layout
+
+\begin_layout Standard
+Теперь рассмотрим, как поведут себя комбинированные методы при фиксированном
+ шаге 
+\begin_inset Formula $h_{2}=0.4$
+\end_inset
+
+ и различных периодах изменения во времени тангенциальной скорости: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pic/test7-1.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pic/test7-2.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Зависимость погрешности от периода изменения поля скорости
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Можно отметить, что для метода Адамса лучшие результаты дало применение
+ кубической интерполяции, в то время, как для метода Рунге-Кутта минимальную
+ погрешность дала интерполяция кубическими сплайнами 
+\begin_inset Formula $S_{3,1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Теперь дискретизируем дополнительно еще и временной интервал 
+\begin_inset Formula $[0,T]$
+\end_inset
+
+, так что для вычисления значений поля скорости в моменты времени 
+\begin_inset Formula $t\neq rh_{3}$
+\end_inset
+
+ потребуется применить одномерную интерполяцию.
+ Посмотрим, как поведут себя методы одномерной интерполяции в зависимости
+ от шага.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1860,6 +2597,48 @@ key "key-5"
 \end_inset
 
  - Владивосток: Издательство Дальневосточного Университета, 2006.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "6"
+key "key-6"
+
+\end_inset
+
+Григорьев Ю.Н., Вшивков В.А., Федорук М.П., 
+\begin_inset Quotes eld
+\end_inset
+
+Численное моделирование методами частиц в ячейках
+\begin_inset Quotes erd
+\end_inset
+
+, Новосибирск, Изд-во РАН, 2004, 360с.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "7"
+key "key-7"
+
+\end_inset
+
+Гуржий А.
+ А., Прокопович И.С.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Адвекция пассивной жидкости в поле скорости двух точечных вихрей в круговой
+ области
+\begin_inset Quotes erd
+\end_inset
+
+ // Вестник Харьковского национального университета, №847, 2009, с.123 -
+ 130.
 \end_layout
 
 \end_body
